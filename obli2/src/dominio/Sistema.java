@@ -13,4 +13,12 @@ public class Sistema {
     public ArrayList<Tematica> obtenerTematicas() {
         return tematicas;
     }
+    public ArrayList<String> obtenerNombresTematicas(){
+        ArrayList<String> nombres = new ArrayList<>();
+        for (Tematica elemento : tematicas){
+            String nombre = elemento.getNombre();
+            nombres.add(nombre);
+        }
+        return nombres;
+    }
 }

@@ -49,6 +49,11 @@ public class ventanaRegistro extends javax.swing.JFrame {
 
         btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnRegistrar.setText("Registrar");
+        btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRegistrarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCancelar.setText("Canelar");
@@ -120,13 +125,19 @@ public class ventanaRegistro extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nombreTematicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreTematicaActionPerformed
-        Tematica tematica = new Tematica(nombreTematica.getText(),descripcionTematica.getText());
-        modelo.agregarTematica(tematica);
+
     }//GEN-LAST:event_nombreTematicaActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
+        Tematica tematica = new Tematica(nombreTematica.getText(), descripcionTematica.getText());
+        modelo.agregarTematica(tematica);
+        nombreTematica.setText("");
+        descripcionTematica.setText("");
+    }//GEN-LAST:event_btnRegistrarActionPerformed
 
 //    /**
 //     * @param args the command line arguments

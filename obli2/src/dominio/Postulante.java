@@ -1,23 +1,25 @@
 package dominio;
-
+import java.util.*;
 public class Postulante {
 
     private String Nombre;
     private int Cedula;
     private String direccion;
     private int Telefono;
-    private String Maile;
+    private String Mail;
     private String linkedin;
     private String formato;
+    private HashMap<String, Integer> experiencia;
 
-    public Postulante(String Nombre, int Cedula, String direccion, int Telefono, String Maile, String linkedin, String formato) {
+    public Postulante(String Nombre, int Cedula, String direccion, int Telefono, String Mail, String linkedin, String formato, HashMap<String, Integer> experiencia) {
         this.Nombre = Nombre;
         this.Cedula = Cedula;
         this.direccion = direccion;
         this.Telefono = Telefono;
-        this.Maile = Maile;
+        this.Mail = Mail;
         this.linkedin = linkedin;
         this.formato = formato;
+        this.experiencia = experiencia;
     }
 
     public String getNombre() {
@@ -52,12 +54,12 @@ public class Postulante {
         this.Telefono = Telefono;
     }
 
-    public String getMaile() {
-        return Maile;
+    public String getMail() {
+        return Mail;
     }
 
-    public void setMaile(String Maile) {
-        this.Maile = Maile;
+    public void setMail(String Mail) {
+        this.Mail = Mail;
     }
 
     public String getLinkedin() {
@@ -75,4 +77,13 @@ public class Postulante {
     public void setFormato(String formato) {
         this.formato = formato;
     }
+
+    public HashMap<String, Integer> getExperiencia() {
+        return experiencia;
+    }
+
+    public void setExperiencia(HashMap<String, Integer> experiencia) {
+        this.experiencia = experiencia;
+    }
+    
 }
