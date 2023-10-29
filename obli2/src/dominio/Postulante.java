@@ -1,49 +1,23 @@
 package dominio;
 import java.util.*;
-public class Postulante {
 
-    private String Nombre;
-    private int Cedula;
-    private String direccion;
+public class Postulante extends Persona {
+
     private int Telefono;
     private String Mail;
     private String linkedin;
     private String formato;
     private HashMap<String, Integer> experiencia;
 
-    public Postulante(String Nombre, int Cedula, String direccion, int Telefono, String Mail, String linkedin, String formato, HashMap<String, Integer> experiencia) {
-        this.Nombre = Nombre;
-        this.Cedula = Cedula;
-        this.direccion = direccion;
+    public Postulante(String nombre, int cedula, String direccion, int Telefono, String Mail, String linkedin, String formato, HashMap<String, Integer> experiencia) {
+
+        super(nombre, cedula, direccion);
+
         this.Telefono = Telefono;
         this.Mail = Mail;
         this.linkedin = linkedin;
         this.formato = formato;
         this.experiencia = experiencia;
-    }
-
-    public String getNombre() {
-        return Nombre;
-    }
-
-    public void setNombre(String Nombre) {
-        this.Nombre = Nombre;
-    }
-
-    public int getCedula() {
-        return Cedula;
-    }
-
-    public void setCedula(int Cedula) {
-        this.Cedula = Cedula;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
     }
 
     public int getTelefono() {

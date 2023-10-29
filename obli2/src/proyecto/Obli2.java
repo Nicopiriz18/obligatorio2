@@ -8,7 +8,7 @@ public class Obli2 {
 
     public static void main(String[] args) {
         Sistema sistema = new Sistema();
-        ventanaRegistro vent = new ventanaRegistro(sistema);
+        VentanaRegistro vent = new VentanaRegistro(sistema);
         vent.setVisible(true);
     }
 }

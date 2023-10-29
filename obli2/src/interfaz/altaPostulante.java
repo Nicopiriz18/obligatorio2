@@ -1,11 +1,12 @@
 package interfaz;
+import interfaz.SiguienteVentana;
 import dominio.*;
-public class altaPostulante extends javax.swing.JFrame {
+public class AltaPostulante extends javax.swing.JFrame {
 
     /**
      * Creates new form altaPostulante
      */
-    public altaPostulante(Sistema sis) {
+    public AltaPostulante(Sistema sis) {
         initComponents();
         modelo = sis;
     }
@@ -161,8 +162,8 @@ public class altaPostulante extends javax.swing.JFrame {
                             .addComponent(jLabel12)
                             .addComponent(jLabel13)
                             .addComponent(jLabel14)
-                            .addComponent(jLabel15)
-                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel15))
+                        .addGap(69, 69, 69)
                         .addGroup(formatoPostulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(formatoPostulanteLayout.createSequentialGroup()
                                 .addGap(35, 35, 35)
@@ -182,6 +183,8 @@ public class altaPostulante extends javax.swing.JFrame {
                                         .addGap(9, 9, 9))))
                             .addGroup(formatoPostulanteLayout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(50, 50, 50))
         );
@@ -272,7 +275,7 @@ public class altaPostulante extends javax.swing.JFrame {
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
         
-        siguienteVentana nuevaVentana = new siguienteVentana();
+        SiguienteVentana nuevaVentana = new SiguienteVentana(modelo);
         nuevaVentana.setVisible(true);
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
