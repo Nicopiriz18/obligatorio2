@@ -28,7 +28,7 @@ public class Tematica extends Observable {
 
     @Override
     public String toString() {
-        return "Tematica{" + "nombre=" + nombre + ", descripcion=" + descripcion + '}';
+        return nombre;
     }
     
 }

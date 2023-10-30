@@ -1,9 +1,9 @@
 package interfaz;
 
 import dominio.*;
+import javax.swing.*;
 
 public class VentanaRegistroTematica extends javax.swing.JFrame {
-
     public VentanaRegistroTematica(Sistema sis) {
         initComponents();
         modelo = sis;
@@ -99,11 +99,11 @@ public class VentanaRegistroTematica extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnRegistrar))
-                .addGap(31, 31, 31))
+                .addGap(8, 8, 8))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -134,10 +134,17 @@ public class VentanaRegistroTematica extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
-        Tematica tematica = new Tematica(nombreTematica.getText(), descripcionTematica.getText());
-        modelo.agregarTematica(tematica);
-        nombreTematica.setText("");
-        descripcionTematica.setText("");
+        if (nombreTematica.getText().isEmpty() || descripcionTematica.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(VentanaRegistroTematica.this, "Debe llenar ambos campos.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if(modelo.nombreEsUnico(nombreTematica.getText())){
+            JOptionPane.showMessageDialog(VentanaRegistroTematica.this, "El nombre debe ser unico", "Error", JOptionPane.ERROR_MESSAGE);
+        }else {
+            Tematica tematica = new Tematica(nombreTematica.getText(), descripcionTematica.getText());
+            modelo.agregarTematica(tematica);
+            nombreTematica.setText("");
+            descripcionTematica.setText("");
+        }
+
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
 //    /**

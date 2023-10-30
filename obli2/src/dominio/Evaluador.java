@@ -4,7 +4,7 @@
  */
 package dominio;
 
-import dominio.Persona;
+import dominio.*;
 
 /**
  *

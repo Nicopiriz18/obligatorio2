@@ -48,6 +48,7 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
         jLabel2.setText("Nivel");
 
         comboTemas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboTemas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         comboTemas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboTemasActionPerformed(evt);
@@ -76,7 +77,7 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
         jScrollPane1.setViewportView(listaTemas);
 
         btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnAgregar.setText("Agregar");
+        btnAgregar.setText("Eliminar");
         btnAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAgregarActionPerformed(evt);
