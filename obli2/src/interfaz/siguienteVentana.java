@@ -11,9 +11,9 @@ public class SiguienteVentana extends javax.swing.JFrame {
         cargarCombo();
     }
     public void cargarCombo() {
-        ArrayList<String> temas = modelo.obtenerNombresTematicas();
-        for(String tema : temas){
-            comboTemas.addItem(tema);
+        ArrayList<Tematica> temas = modelo.obtenerTematicas();
+        for(Tematica tema : temas){
+            comboTemas.addItem(tema.getNombre());
         }
     }
     /**
