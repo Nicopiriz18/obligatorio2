@@ -274,7 +274,6 @@ public class AltaPostulante extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        
         SiguienteVentana nuevaVentana = new SiguienteVentana(modelo);
         nuevaVentana.setVisible(true);
     }//GEN-LAST:event_btnSiguienteActionPerformed
