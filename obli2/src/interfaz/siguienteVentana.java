@@ -1,16 +1,20 @@
 package interfaz;
 import java.util.*;
 import dominio.*;
+import javax.swing.*;
 
 public class siguienteVentana extends javax.swing.JFrame {
     
     public siguienteVentana(Sistema sis) {
         initComponents();
         modelo = sis;
+        cargarCombo();
     }
-    public void cargarListas(){
-        //ArrayList<String> temas = modelo.obtenerNombesTematicas();
-        listaTemas.setListData(modelo.obtenerNombresTematicas().toArray());
+    public void cargarCombo() {
+        ArrayList<String> temas = modelo.obtenerNombresTematicas();
+        for(String tema : temas){
+            comboTemas.addItem(tema);
+        }
     }
     /**
      * This method is called from within the constructor to initialize the form.

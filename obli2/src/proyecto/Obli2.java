@@ -10,5 +10,12 @@ public class Obli2 {
         Sistema sistema = new Sistema();
         ventanaRegistro vent = new ventanaRegistro(sistema);
         vent.setVisible(true);
+        
+        Scanner in = new Scanner(System.in);
+        int num = in.nextInt();
+        if (num == 0 ){
+            siguienteVentana ven = new siguienteVentana(sistema);
+            ven.setVisible(true);
+        }
     }
 }
