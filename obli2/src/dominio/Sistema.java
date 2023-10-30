@@ -36,4 +36,18 @@ public class Sistema {
         
         return entrevistasPorPersona;
     }
+    public Boolean cedulaEsUnica(int ced){
+        Boolean repetida = false;
+        for(int i=0; i<postulantes.size() && !repetida; i++){
+            Postulante post = postulantes.get(i);
+            repetida = post.getCedula() == ced;
+        }
+        return repetida;
+    }
+//    public Tematica devolverTematicaNombre(String nombre){
+//        Tematica tem;
+//        for(tema: tematicas){
+//            if()
+//        }
+//    }
 }

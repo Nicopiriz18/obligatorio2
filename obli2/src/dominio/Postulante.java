@@ -7,9 +7,9 @@ public class Postulante extends Persona {
     private String Mail;
     private String linkedin;
     private String formato;
-    private HashMap<String, Integer> experiencia;
+    private HashMap<Tematica, Integer> experiencia;
 
-    public Postulante(String nombre, int cedula, String direccion, int Telefono, String Mail, String linkedin, String formato, HashMap<String, Integer> experiencia) {
+    public Postulante(String nombre, int cedula, String direccion, int Telefono, String Mail, String linkedin, String formato) {
 
         super(nombre, cedula, direccion);
 
@@ -17,7 +17,6 @@ public class Postulante extends Persona {
         this.Mail = Mail;
         this.linkedin = linkedin;
         this.formato = formato;
-        this.experiencia = experiencia;
     }
 
     public int getTelefono() {
@@ -52,12 +51,15 @@ public class Postulante extends Persona {
         this.formato = formato;
     }
 
-    public HashMap<String, Integer> getExperiencia() {
+    public HashMap<Tematica, Integer> getExperiencia() {
         return experiencia;
     }
 
-    public void setExperiencia(HashMap<String, Integer> experiencia) {
+    public void setExperiencia(HashMap<Tematica, Integer> experiencia) {
         this.experiencia = experiencia;
+    }
+    public void agregarExperiencia(Tematica tem, int numero){
+        experiencia.put(tem, numero);
     }
     
 }

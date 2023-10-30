@@ -1,6 +1,7 @@
 package interfaz;
 import interfaz.SiguienteVentana;
 import dominio.*;
+import javax.swing.JOptionPane;
 public class AltaPostulante extends javax.swing.JFrame {
 
     /**
@@ -182,7 +183,7 @@ public class AltaPostulante extends javax.swing.JFrame {
                                         .addComponent(jRadioButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
                                         .addGap(9, 9, 9))))
                             .addGroup(formatoPostulanteLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnSiguiente, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)))))
@@ -274,8 +275,15 @@ public class AltaPostulante extends javax.swing.JFrame {
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        SiguienteVentana nuevaVentana = new SiguienteVentana(modelo);
-        nuevaVentana.setVisible(true);
+        int cedula = Utils.convertirAEntero(this.cedulaPostulante.getText());
+        if(this.nombrePostulante.getText().strip() == ""){
+            JOptionPane.showMessageDialog(AltaPostulante.this, "Error: Ingrese nombre válido", "Error", JOptionPane.ERROR_MESSAGE);
+        }else if(cedula == -1 ){
+            JOptionPane.showMessageDialog(AltaPostulante.this, "Error: Ingrese cedula válida", "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+            SiguienteVentana nuevaVentana = new SiguienteVentana(modelo);
+            nuevaVentana.setVisible(true);
+        }
     }//GEN-LAST:event_btnSiguienteActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
