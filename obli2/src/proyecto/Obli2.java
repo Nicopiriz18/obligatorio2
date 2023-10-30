@@ -15,7 +15,7 @@ public class Obli2 {
         Scanner in = new Scanner(System.in);
         int num = in.nextInt();
         if (num == 0 ){
-            SiguienteVentana ven = new SiguienteVentana(sistema);
+            VentanaTematicasPostulante ven = new VentanaTematicasPostulante(sistema);
             ven.setVisible(true);
         }
     }

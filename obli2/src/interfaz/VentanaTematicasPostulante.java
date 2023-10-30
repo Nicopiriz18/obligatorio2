@@ -3,9 +3,9 @@ import java.util.*;
 import dominio.*;
 import javax.swing.*;
 
-public class SiguienteVentana extends javax.swing.JFrame {
+public class VentanaTematicasPostulante extends javax.swing.JFrame {
     
-    public SiguienteVentana(Sistema sis) {
+    public VentanaTematicasPostulante(Sistema sis) {
         initComponents();
         modelo = sis;
         cargarCombo();

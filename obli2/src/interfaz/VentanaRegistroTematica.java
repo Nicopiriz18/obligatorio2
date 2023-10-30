@@ -2,9 +2,9 @@ package interfaz;
 
 import dominio.*;
 
-public class VentanaRegistro extends javax.swing.JFrame {
+public class VentanaRegistroTematica extends javax.swing.JFrame {
 
-    public VentanaRegistro(Sistema sis) {
+    public VentanaRegistroTematica(Sistema sis) {
         initComponents();
         modelo = sis;
     }

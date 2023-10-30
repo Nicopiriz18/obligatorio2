@@ -1,5 +1,5 @@
 package interfaz;
-import interfaz.SiguienteVentana;
+import interfaz.*;
 import dominio.*;
 import javax.swing.JOptionPane;
 public class AltaPostulante extends javax.swing.JFrame {
@@ -281,7 +281,7 @@ public class AltaPostulante extends javax.swing.JFrame {
         }else if(cedula == -1 ){
             JOptionPane.showMessageDialog(AltaPostulante.this, "Error: Ingrese cedula válida", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
-            SiguienteVentana nuevaVentana = new SiguienteVentana(modelo);
+            VentanaTematicasPostulante nuevaVentana = new VentanaTematicasPostulante(modelo);
             nuevaVentana.setVisible(true);
         }
     }//GEN-LAST:event_btnSiguienteActionPerformed
