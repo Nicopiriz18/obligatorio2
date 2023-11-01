@@ -9,6 +9,8 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
         initComponents();
         modelo = sis;
         cargarCombo();
+        experienciaElegidas = new HashMap<>();
+
     }
     public void cargarCombo() {
         ArrayList<Tematica> temas = modelo.obtenerTematicas();
@@ -47,7 +49,7 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Nivel");
 
-        comboTemas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        comboTemas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
         comboTemas.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         comboTemas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -55,8 +57,17 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
             }
         });
 
+        SpinnerNumberModel spinnerModel = new SpinnerNumberModel(1, 1, 10, 1);
+
+        spinnerNivel.setModel(spinnerModel);
+
         jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton1.setText("Agregar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Experiencia");
@@ -70,7 +81,7 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
         });
 
         listaTemas.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = {};
             public int getSize() { return strings.length; }
             public String getElementAt(int i) { return strings[i]; }
         });
@@ -171,11 +182,21 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        String tematicaElegidaString = (String)this.comboTemas.getSelectedItem();
+        Tematica tematicaElegida = modelo.devolverTematicaNombre(tematicaElegidaString);
+        int valorSpinner = (int) spinnerNivel.getValue();
+        experienciaElegidas.put(tematicaElegida, valorSpinner);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,4 +218,5 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
     private javax.swing.JSpinner spinnerNivel;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
+    private HashMap<Tematica, Integer> experienciaElegidas;
 }
