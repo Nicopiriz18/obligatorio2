@@ -3,22 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/manue/Desktop/YO/ORT/prog2/obligatorio2/obli2/src/interfaz/SiguienteVentana.java</file>
-            <file>file:/C:/Users/manue/Desktop/YO/ORT/prog2/obligatorio2/obli2/src/interfaz/VentanaRegistro.java</file>
-=======
-            <file>file:/C:/Users/nicol/facultad/programacion/obligatorio2/obli2/src/dominio/Sistema.java</file>
-            <file>file:/C:/Users/nicol/facultad/programacion/obligatorio2/obli2/src/dominio/Puesto.java</file>
-            <file>file:/C:/Users/nicol/facultad/programacion/obligatorio2/obli2/src/interfaz/VentanaRegistro.java</file>
-            <file>file:/C:/Users/nicol/facultad/programacion/obligatorio2/obli2/src/dominio/Entrevista.java</file>
-            <file>file:/C:/Users/nicol/facultad/programacion/obligatorio2/obli2/src/dominio/Evaluador.java</file>
-            <file>file:/C:/Users/nicol/facultad/programacion/obligatorio2/obli2/src/dominio/Postulante.java</file>
-            <file>file:/C:/Users/nicol/facultad/programacion/obligatorio2/obli2/src/dominio/Tematica.java</file>
-            <file>file:/C:/Users/nicol/facultad/programacion/obligatorio2/obli2/src/interfaz/SiguienteVentana.java</file>
-            <file>file:/C:/Users/nicol/facultad/programacion/obligatorio2/obli2/src/dominio/Persona.java</file>
-            <file>file:/C:/Users/nicol/facultad/programacion/obligatorio2/obli2/src/proyecto/Obli2.java</file>
-            <file>file:/C:/Users/nicol/facultad/programacion/obligatorio2/obli2/src/interfaz/AltaPostulante.java</file>
->>>>>>> 25a7f336b11c954c8c25bb2ae7d5c55ebaeb9e69
+            <file>file:/C:/Users/manue/Desktop/YO/ORT/prog2/obligatorio2/obli2/src/interfaz/altaPostulante.java</file>
+            <file>file:/C:/Users/manue/Desktop/YO/ORT/prog2/obligatorio2/obli2/src/dominio/Sistema.java</file>
         </group>
     </open-files>
 </project-private>
