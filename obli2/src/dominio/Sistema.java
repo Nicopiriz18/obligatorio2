@@ -62,11 +62,16 @@ public class Sistema {
         }
         return repetida;
     }
-//    public Tematica devolverTematicaNombre(String nombre){
-//        Tematica tem;
-//        for(tema: tematicas){
-//            if()
-//        }
-//    }
+    public Tematica devolverTematicaNombre(String nombre){
+        Tematica tem = new Tematica("default", "default");
+        boolean hallada = false;
+        for(int i = 0; i < tematicas.size() && !hallada; i++){
+            if(tematicas.get(i).getNombre() == nombre){
+                tem = tematicas.get(i);
+                hallada = true;
+            }
+        }
+        return tem;
+    }
 }
 
