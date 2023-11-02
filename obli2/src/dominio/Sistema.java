@@ -28,6 +28,10 @@ public class Sistema {
         postulantes.add(postulante);
         return postulantes;
     }
+    public ArrayList<Evaluador> agregarEvaluador(Evaluador evaluador){
+        evaluadores.add(evaluador);
+        return evaluadores;
+    }
     public ArrayList<String> obtenerNombresTematicas(){
         ArrayList<String> nombres = new ArrayList<>();
         for (Tematica elemento : tematicas){
