@@ -14,9 +14,10 @@ public class Obli2 {
         
         Scanner in = new Scanner(System.in);
         int num = in.nextInt();
-        if (num == 0 ){
+        while (num != 0 ){
             VentanaTematicasPostulante ven = new VentanaTematicasPostulante(sistema);
             ven.setVisible(true);
+            num = in.nextInt();
         }
     }
 }
