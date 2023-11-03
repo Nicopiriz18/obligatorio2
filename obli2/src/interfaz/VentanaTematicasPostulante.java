@@ -1,10 +1,11 @@
 package interfaz;
+
 import java.util.*;
 import dominio.*;
 import javax.swing.*;
 
 public class VentanaTematicasPostulante extends javax.swing.JFrame {
-    
+
     public VentanaTematicasPostulante(Sistema sis) {
         initComponents();
         modelo = sis;
@@ -12,12 +13,34 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
         experienciaElegidas = new HashMap<>();
 
     }
+
     public void cargarCombo() {
         ArrayList<Tematica> temas = modelo.obtenerTematicas();
-        for(Tematica tema : temas){
+        for (Tematica tema : temas) {
             comboTemas.addItem(tema.getNombre());
         }
     }
+    
+
+    public String[] arrayHashmap() {
+        String[] experiencias = new String[experienciaElegidas.size()];
+        ArrayList<Map.Entry<Tematica, Integer>> entradas = new ArrayList<>(experienciaElegidas.entrySet());
+
+        //recorro el arraylist con un for teniendo acceso al i
+        for (int i = 0; i < entradas.size(); i++) {
+            Map.Entry<Tematica, Integer> entrada = entradas.get(i);
+            String tema = entrada.getKey().toString();
+            Integer valor = entrada.getValue();
+            experiencias[i] = tema + " (" + valor + ")";
+        }
+        return experiencias;
+    }
+
+    public void cargarListaExperiencia() {
+        String[] listaExp = arrayHashmap();
+        listaTemas.setListData(listaExp);
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -32,13 +55,13 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         comboTemas = new javax.swing.JComboBox<>();
         spinnerNivel = new javax.swing.JSpinner();
-        jButton1 = new javax.swing.JButton();
+        buttonAgregarExperiencia = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
         btnRegistrar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         listaTemas = new javax.swing.JList<>();
-        btnAgregar = new javax.swing.JButton();
+        buttonEliminarExp = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
 
         getContentPane().setLayout(null);
@@ -61,11 +84,11 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
 
         spinnerNivel.setModel(spinnerModel);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("Agregar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonAgregarExperiencia.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buttonAgregarExperiencia.setText("Agregar");
+        buttonAgregarExperiencia.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonAgregarExperienciaActionPerformed(evt);
             }
         });
 
@@ -87,11 +110,11 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(listaTemas);
 
-        btnAgregar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnAgregar.setText("Eliminar");
-        btnAgregar.addActionListener(new java.awt.event.ActionListener() {
+        buttonEliminarExp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buttonEliminarExp.setText("Eliminar");
+        buttonEliminarExp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarActionPerformed(evt);
+                buttonEliminarExpActionPerformed(evt);
             }
         });
 
@@ -124,12 +147,12 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(spinnerNivel)
                                 .addGap(40, 40, 40)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(buttonAgregarExperiencia, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
-                            .addComponent(btnAgregar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(buttonEliminarExp, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(25, Short.MAX_VALUE))
@@ -148,7 +171,7 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
+                            .addComponent(buttonAgregarExperiencia)
                             .addComponent(spinnerNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(35, 35, 35)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -157,7 +180,7 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnAgregar))
+                        .addComponent(buttonEliminarExp))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -176,38 +199,49 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_comboTemasActionPerformed
 
-    private void btnAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarActionPerformed
+    private void buttonEliminarExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarExpActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnAgregarActionPerformed
-
+        String seleccionado = listaTemas.getSelectedValue();
+        System.out.println(seleccionado);
+        if(seleccionado == null || seleccionado == ""){
+            JOptionPane.showMessageDialog(VentanaTematicasPostulante.this, "No se seleccionó una experiencia a eliminar", "Error", JOptionPane.ERROR_MESSAGE);
+        }else{
+            String[] expValor = seleccionado.split(" ");
+            Tematica tematicaAEliminar = modelo.devolverTematicaNombre(expValor[0]);
+            System.out.println(tematicaAEliminar.toString());
+            experienciaElegidas.remove(tematicaAEliminar);
+            cargarListaExperiencia();            
+        }
+    }//GEN-LAST:event_buttonEliminarExpActionPerformed
+    
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonAgregarExperienciaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarExperienciaActionPerformed
         // TODO add your handling code here:
-        String tematicaElegidaString = (String)this.comboTemas.getSelectedItem();
+        String tematicaElegidaString = (String) this.comboTemas.getSelectedItem();
         Tematica tematicaElegida = modelo.devolverTematicaNombre(tematicaElegidaString);
         int valorSpinner = (int) spinnerNivel.getValue();
         experienciaElegidas.put(tematicaElegida, valorSpinner);
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
+        cargarListaExperiencia();
+    }//GEN-LAST:event_buttonAgregarExperienciaActionPerformed
 
     /**
      * @param args the command line arguments
      */
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregar;
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnRegistrar;
+    private javax.swing.JButton buttonAgregarExperiencia;
+    private javax.swing.JButton buttonEliminarExp;
     private javax.swing.JComboBox<String> comboTemas;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
