@@ -1,7 +1,12 @@
 package interfaz;
+
 import interfaz.*;
 import dominio.*;
+import java.util.Enumeration;
+import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
+import javax.swing.JRadioButton;
+
 public class AltaPostulante extends javax.swing.JFrame {
 
     /**
@@ -37,9 +42,9 @@ public class AltaPostulante extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         linkedinPostulante = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        radioRemoto = new javax.swing.JRadioButton();
+        radioPresencial = new javax.swing.JRadioButton();
+        radioMixto = new javax.swing.JRadioButton();
         btnCancelar = new javax.swing.JButton();
         btnSiguiente = new javax.swing.JButton();
 
@@ -105,27 +110,27 @@ public class AltaPostulante extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setText("Formato");
 
-        formatoTrabajo.add(jRadioButton1);
-        jRadioButton1.setText("Remoto");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        formatoTrabajo.add(radioRemoto);
+        radioRemoto.setText("Remoto");
+        radioRemoto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                radioRemotoActionPerformed(evt);
             }
         });
 
-        formatoTrabajo.add(jRadioButton2);
-        jRadioButton2.setText("Presencial");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        formatoTrabajo.add(radioPresencial);
+        radioPresencial.setText("Presencial");
+        radioPresencial.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                radioPresencialActionPerformed(evt);
             }
         });
 
-        formatoTrabajo.add(jRadioButton3);
-        jRadioButton3.setText("Mixto");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        formatoTrabajo.add(radioMixto);
+        radioMixto.setText("Mixto");
+        radioMixto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                radioMixtoActionPerformed(evt);
             }
         });
 
@@ -176,11 +181,11 @@ public class AltaPostulante extends javax.swing.JFrame {
                                     .addComponent(mailPostulante)
                                     .addComponent(linkedinPostulante)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, formatoPostulanteLayout.createSequentialGroup()
-                                        .addComponent(jRadioButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(radioRemoto, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(54, 54, 54)
-                                        .addComponent(jRadioButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                                        .addComponent(radioPresencial, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
                                         .addGap(64, 64, 64)
-                                        .addComponent(jRadioButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
+                                        .addComponent(radioMixto, javax.swing.GroupLayout.DEFAULT_SIZE, 89, Short.MAX_VALUE)
                                         .addGap(9, 9, 9))))
                             .addGroup(formatoPostulanteLayout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
@@ -222,9 +227,9 @@ public class AltaPostulante extends javax.swing.JFrame {
                 .addGroup(formatoPostulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel15)
                     .addGroup(formatoPostulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                        .addComponent(jRadioButton1)
-                        .addComponent(jRadioButton2)
-                        .addComponent(jRadioButton3)))
+                        .addComponent(radioRemoto)
+                        .addComponent(radioPresencial)
+                        .addComponent(radioMixto)))
                 .addGap(33, 33, 33)
                 .addGroup(formatoPostulanteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
@@ -262,26 +267,55 @@ public class AltaPostulante extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_linkedinPostulanteActionPerformed
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void radioRemotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioRemotoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_radioRemotoActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+    private void radioMixtoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioMixtoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
+    }//GEN-LAST:event_radioMixtoActionPerformed
 
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void radioPresencialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioPresencialActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_radioPresencialActionPerformed
 
     private void btnSiguienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiguienteActionPerformed
-        int cedula = Utils.convertirAEntero(this.cedulaPostulante.getText());
-        if(this.nombrePostulante.getText().strip() == ""){
-            JOptionPane.showMessageDialog(AltaPostulante.this, "Error: Ingrese nombre válido", "Error", JOptionPane.ERROR_MESSAGE);
-        }else if(cedula == -1 ){
-            JOptionPane.showMessageDialog(AltaPostulante.this, "Error: Ingrese cedula válida", "Error", JOptionPane.ERROR_MESSAGE);
-        }else{
-            VentanaTematicasPostulante nuevaVentana = new VentanaTematicasPostulante(modelo);
+        String cedula = this.cedulaPostulante.getText();
+        String nombre = this.nombrePostulante.getText();
+        String direccion = this.direccionPostulante.getText();
+        String telefono = this.telefonoPostulante.getText();
+        String mail = this.mailPostulante.getText();
+        String linkedin = this.linkedinPostulante.getText();
+
+        String selectedRadioButton = "";
+        if (radioRemoto.isSelected()) {
+            selectedRadioButton = "remoto";
+        } else if (radioPresencial.isSelected()) {
+            selectedRadioButton = "presencial";
+        } else if (radioMixto.isSelected()) {
+            selectedRadioButton = "mixto";
+        }
+        String[] valores = {nombre, cedula, direccion, telefono, mail, linkedin, selectedRadioButton};
+        boolean validos = true;
+        for (int i = 0; i < valores.length && validos; i++) {
+            if (valores[i].strip().equals("") || valores[i] == null) {
+                validos = false;
+                JOptionPane.showMessageDialog(AltaPostulante.this, "Error: Debe completar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        int cedulaInt = Utils.convertirAEntero(cedula);
+        if (validos) {
+            if (cedulaInt == -1) {
+                JOptionPane.showMessageDialog(AltaPostulante.this, "Error: Ingrese cedula válida", "Error", JOptionPane.ERROR_MESSAGE);
+                validos = false;
+            } else if (!modelo.cedulaEsUnica(cedulaInt)) {
+                JOptionPane.showMessageDialog(AltaPostulante.this, "Ya existe una persona con la cedula indicada. Verifique la misma", "Error", JOptionPane.ERROR_MESSAGE);
+                validos = false;
+            }
+        }
+        if (validos) {
+            Postulante post = new Postulante(nombre, cedulaInt, direccion, telefono, mail, linkedin, selectedRadioButton);
+            VentanaTematicasPostulante nuevaVentana = new VentanaTematicasPostulante(modelo, post);
             nuevaVentana.setVisible(true);
         }
     }//GEN-LAST:event_btnSiguienteActionPerformed
@@ -309,12 +343,12 @@ public class AltaPostulante extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JTextField linkedinPostulante;
     private javax.swing.JTextField mailPostulante;
     private javax.swing.JTextField nombrePostulante;
+    private javax.swing.JRadioButton radioMixto;
+    private javax.swing.JRadioButton radioPresencial;
+    private javax.swing.JRadioButton radioRemoto;
     private javax.swing.JTextField telefonoPostulante;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
