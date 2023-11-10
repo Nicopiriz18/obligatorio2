@@ -64,7 +64,7 @@ public class Sistema {
             Postulante post = postulantes.get(i);
             repetida = post.getCedula() == ced;
         }
-        return repetida;
+        return !repetida;
     }
     public Tematica devolverTematicaNombre(String nombre){
         Tematica tem = new Tematica("default", "default");
