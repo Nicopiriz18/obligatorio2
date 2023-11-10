@@ -3,13 +3,13 @@ import java.util.*;
 
 public class Postulante extends Persona {
 
-    private int Telefono;
+    private String Telefono;
     private String Mail;
     private String linkedin;
     private String formato;
     private HashMap<Tematica, Integer> experiencia;
 
-    public Postulante(String nombre, int cedula, String direccion, int Telefono, String Mail, String linkedin, String formato) {
+    public Postulante(String nombre, int cedula, String direccion, String Telefono, String Mail, String linkedin, String formato) {
 
         super(nombre, cedula, direccion);
 
@@ -19,11 +19,11 @@ public class Postulante extends Persona {
         this.formato = formato;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return Telefono;
     }
 
-    public void setTelefono(int Telefono) {
+    public void setTelefono(String Telefono) {
         this.Telefono = Telefono;
     }
 

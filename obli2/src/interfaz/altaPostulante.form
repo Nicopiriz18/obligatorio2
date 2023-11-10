@@ -68,11 +68,11 @@
                                       <Component id="mailPostulante" max="32767" attributes="0"/>
                                       <Component id="linkedinPostulante" max="32767" attributes="0"/>
                                       <Group type="102" alignment="1" attributes="0">
-                                          <Component id="jRadioButton1" min="-2" pref="85" max="-2" attributes="0"/>
+                                          <Component id="radioRemoto" min="-2" pref="85" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
-                                          <Component id="jRadioButton2" pref="89" max="32767" attributes="0"/>
+                                          <Component id="radioPresencial" pref="89" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="64" max="-2" attributes="0"/>
-                                          <Component id="jRadioButton3" pref="89" max="32767" attributes="0"/>
+                                          <Component id="radioMixto" pref="89" max="32767" attributes="0"/>
                                           <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
@@ -129,9 +129,9 @@
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="jRadioButton1" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButton2" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="jRadioButton3" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="radioRemoto" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="radioPresencial" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="radioMixto" alignment="2" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
@@ -150,7 +150,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Alta postulante"/>
+            <Property name="text" type="java.lang.String" value="Alta de postulante"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
@@ -239,7 +239,7 @@
             <Property name="text" type="java.lang.String" value="Formato"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton1">
+        <Component class="javax.swing.JRadioButton" name="radioRemoto">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="formatoTrabajo"/>
@@ -247,10 +247,10 @@
             <Property name="text" type="java.lang.String" value="Remoto"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioRemotoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton2">
+        <Component class="javax.swing.JRadioButton" name="radioPresencial">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="formatoTrabajo"/>
@@ -258,10 +258,10 @@
             <Property name="text" type="java.lang.String" value="Presencial"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioPresencialActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="jRadioButton3">
+        <Component class="javax.swing.JRadioButton" name="radioMixto">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="formatoTrabajo"/>
@@ -269,7 +269,7 @@
             <Property name="text" type="java.lang.String" value="Mixto"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jRadioButton3ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="radioMixtoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="btnCancelar">
