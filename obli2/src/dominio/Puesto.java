@@ -15,5 +15,16 @@ public class Puesto {
     private String nombre;
     private String formato;
     private ArrayList<Tematica> temas;
+
+    public Puesto(String nombre, String formato, ArrayList<Tematica> temas) {
+        this.nombre = nombre;
+        this.formato = formato;
+        this.temas = temas;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+    
     
 }

@@ -61,5 +61,9 @@ public class Postulante extends Persona {
     public void agregarExperiencia(Tematica tem, int numero){
         experiencia.put(tem, numero);
     }
+    @Override
+    public String toString(){
+        return this.getNombre();
+    }
     
 }
