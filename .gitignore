@@ -5,4 +5,8 @@
 # Ignorar carpetas generadas
 build/
 dist/
+<<<<<<< HEAD
 nbproject/private/
+=======
+nbproject/private/
+>>>>>>> f8b1019ef9fba1d2dc4cc36f9b5b14886db2d65f
