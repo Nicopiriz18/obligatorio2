@@ -309,7 +309,8 @@ public class AltaPostulante extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(AltaPostulante.this, "Error: Ingrese cedula válida", "Error", JOptionPane.ERROR_MESSAGE);
                 validos = false;
             } else if (!modelo.cedulaEsUnica(cedulaInt)) {
-                JOptionPane.showMessageDialog(AltaPostulante.this, "Ya existe un postulante Ingrese cedula válida", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(AltaPostulante.this, "Ya existe una persona con la cedula indicada. Verifique la misma", "Error", JOptionPane.ERROR_MESSAGE);
+                validos = false;
 
             }
         }

@@ -4,6 +4,10 @@
  */
 package interfaz;
 
+import dominio.Evaluador;
+import dominio.Sistema;
+import dominio.Utils;
+import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 
 /**
@@ -15,8 +19,9 @@ public class VentanaRegistroEvaluador extends javax.swing.JFrame {
     /**
      * Creates new form VentanaRegistroEvaluador
      */
-    public VentanaRegistroEvaluador() {
+    public VentanaRegistroEvaluador(Sistema mod) {
         initComponents();
+        modelo = mod;
     }
 
     /**
@@ -38,7 +43,7 @@ public class VentanaRegistroEvaluador extends javax.swing.JFrame {
         direccionEvaluador = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         spinnerAno = new javax.swing.JSpinner();
-        jButton1 = new javax.swing.JButton();
+        buttonRegistrarEvaluador = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -83,11 +88,11 @@ public class VentanaRegistroEvaluador extends javax.swing.JFrame {
         SpinnerNumberModel spinner = new SpinnerNumberModel(1930, 1930, 2023, 1);
         spinnerAno.setModel(spinner);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jButton1.setText("Agregar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonRegistrarEvaluador.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buttonRegistrarEvaluador.setText("Registrar");
+        buttonRegistrarEvaluador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonRegistrarEvaluadorActionPerformed(evt);
             }
         });
 
@@ -96,34 +101,34 @@ public class VentanaRegistroEvaluador extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(nombreEvaluador, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
-                        .addComponent(cedulaEvaluador, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel7))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(direccionEvaluador, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
-                            .addComponent(spinnerAno))))
-                .addGap(15, 15, 15))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(147, 147, 147))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addGap(136, 136, 136))))
+                .addComponent(jLabel1)
+                .addGap(147, 147, 147))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(buttonRegistrarEvaluador))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(nombreEvaluador, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                                .addComponent(cedulaEvaluador, javax.swing.GroupLayout.PREFERRED_SIZE, 337, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel7))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(direccionEvaluador, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+                                    .addComponent(spinnerAno))))))
+                .addGap(15, 15, 15))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,9 +151,9 @@ public class VentanaRegistroEvaluador extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(spinnerAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
-                .addComponent(jButton1)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addGap(29, 29, 29)
+                .addComponent(buttonRegistrarEvaluador)
+                .addContainerGap(41, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -183,52 +188,47 @@ public class VentanaRegistroEvaluador extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_direccionEvaluadorActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        nombreEvaluador.setText("");
-        cedulaEvaluador.setText("");
-        direccionEvaluador.setText("");
-        spinnerAno.getModel().setValue(1930);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void buttonRegistrarEvaluadorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonRegistrarEvaluadorActionPerformed
+//        nombreEvaluador.setText("");
+//        cedulaEvaluador.setText("");
+//        direccionEvaluador.setText("");
+//        spinnerAno.getModel().setValue(1930);
+        String nombre = nombreEvaluador.getText();
+        String cedula = cedulaEvaluador.getText();
+        String direccion = direccionEvaluador.getText();
+        int valorSpinner = (int) spinnerAno.getValue();
+        String valorSpinnerString = valorSpinner+"";
+        String[] valores = {nombre, cedula, direccion, valorSpinnerString};
+        boolean validos = true;
+        for (int i = 0; i < valores.length && validos; i++) {
+            if (valores[i].strip().equals("") || valores[i] == null) {
+                validos = false;
+                JOptionPane.showMessageDialog(this, "Debe completar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        int cedulaInt = Utils.convertirAEntero(cedula);
+        if (validos) {
+            if (cedulaInt == -1) {
+                JOptionPane.showMessageDialog(this, "Ingrese cedula válida", "Error", JOptionPane.ERROR_MESSAGE);
+                validos = false;
+            } else if (!modelo.cedulaEsUnica(cedulaInt)) {
+                JOptionPane.showMessageDialog(this, "Ya existe una persona con la cedula indicada. Verifique la misma", "Error", JOptionPane.ERROR_MESSAGE);
+                validos = false;
+            }
+        }
+        if(validos){
+            Evaluador eval = new Evaluador(nombre,cedulaInt, direccion, valorSpinner);
+        }
+    }//GEN-LAST:event_buttonRegistrarEvaluadorActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaRegistroEvaluador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaRegistroEvaluador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaRegistroEvaluador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaRegistroEvaluador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new VentanaRegistroEvaluador().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonRegistrarEvaluador;
     private javax.swing.JTextField cedulaEvaluador;
     private javax.swing.JTextField direccionEvaluador;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -238,4 +238,5 @@ public class VentanaRegistroEvaluador extends javax.swing.JFrame {
     private javax.swing.JTextField nombreEvaluador;
     private javax.swing.JSpinner spinnerAno;
     // End of variables declaration//GEN-END:variables
+    private Sistema modelo;
 }

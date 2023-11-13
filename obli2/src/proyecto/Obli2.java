@@ -11,9 +11,11 @@ public class Obli2 {
         VentanaRegistroTematica vent = new VentanaRegistroTematica(sistema);
         AltaPostulante ventana = new AltaPostulante(sistema);
         vent.setVisible(true);
+        ventana.setVisible(true);
         
         Scanner in = new Scanner(System.in);
         int num = in.nextInt();
+
         while (num != 0 ){
             ventana.setVisible(true);
             num = in.nextInt();

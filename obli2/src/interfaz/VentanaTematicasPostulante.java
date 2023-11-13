@@ -10,6 +10,7 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
     public VentanaTematicasPostulante(Sistema sis, Postulante post) {
         initComponents();
         modelo = sis;
+        postulante = post;
         cargarCombo();
         experienciaElegidas = new HashMap<>();
         postulanteActual = post;
@@ -220,10 +221,9 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(VentanaTematicasPostulante.this, "No se seleccionó una experiencia a eliminar", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             String[] expValor = seleccionado.split(" ");
-            String nombreExpElegida = (String)expValor[0];
-            System.out.println("|"+nombreExpElegida+"|");
+            String nombreExpElegida = expValor[0];
             Tematica tematicaAEliminar = modelo.devolverTematicaNombre(nombreExpElegida);
-            System.out.println(tematicaAEliminar.toString());
+
             experienciaElegidas.remove(tematicaAEliminar);
             cargarListaExperiencia();            
         }
@@ -231,8 +231,8 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
-        postulanteActual.setExperiencia(experienciaElegidas);
-        modelo.agregarPostulante(postulanteActual);
+        postulante.setExperiencia(experienciaElegidas);
+        modelo.agregarPostulante(postulante);
         this.dispose();
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
@@ -275,6 +275,7 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
     private javax.swing.JSpinner spinnerNivel;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
+    private Postulante postulante;
     private HashMap<Tematica, Integer> experienciaElegidas;
     private Postulante postulanteActual;
 }

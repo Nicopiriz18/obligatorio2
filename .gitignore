@@ -1,0 +1,8 @@
+# Ignorar archivos binarios
+*.class
+*.jar
+
+# Ignorar carpetas generadas
+build/
+dist/
+nbproject/private/

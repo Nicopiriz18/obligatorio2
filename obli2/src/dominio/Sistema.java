@@ -70,7 +70,7 @@ public class Sistema {
         Tematica tem = new Tematica("default", "default");
         boolean hallada = false;
         for(int i = 0; i < tematicas.size() && !hallada; i++){
-            if(tematicas.get(i).getNombre() == nombre){
+            if(tematicas.get(i).getNombre().equals(nombre)){
                 tem = tematicas.get(i);
                 hallada = true;
             }
