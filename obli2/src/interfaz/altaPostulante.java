@@ -51,7 +51,7 @@ public class AltaPostulante extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Alta postulante");
+        jLabel1.setText("Alta de postulante");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Nombre:");
@@ -311,12 +311,14 @@ public class AltaPostulante extends javax.swing.JFrame {
             } else if (!modelo.cedulaEsUnica(cedulaInt)) {
                 JOptionPane.showMessageDialog(AltaPostulante.this, "Ya existe una persona con la cedula indicada. Verifique la misma", "Error", JOptionPane.ERROR_MESSAGE);
                 validos = false;
+
             }
         }
         if (validos) {
             Postulante post = new Postulante(nombre, cedulaInt, direccion, telefono, mail, linkedin, selectedRadioButton);
             VentanaTematicasPostulante nuevaVentana = new VentanaTematicasPostulante(modelo, post);
             nuevaVentana.setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_btnSiguienteActionPerformed
 

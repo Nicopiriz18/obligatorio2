@@ -3,6 +3,7 @@ package interfaz;
 import java.util.*;
 import dominio.*;
 import javax.swing.*;
+import interfaz.AltaPostulante;
 
 public class VentanaTematicasPostulante extends javax.swing.JFrame {
 
@@ -12,7 +13,7 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
         postulante = post;
         cargarCombo();
         experienciaElegidas = new HashMap<>();
-
+        postulanteActual = post;
     }
 
     public void cargarCombo() {
@@ -21,7 +22,6 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
             comboTemas.addItem(tema.getNombre());
         }
     }
-    
 
     public String[] arrayHashmap() {
         String[] experiencias = new String[experienciaElegidas.size()];
@@ -64,6 +64,7 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
         listaTemas = new javax.swing.JList<>();
         buttonEliminarExp = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         getContentPane().setLayout(null);
 
@@ -97,7 +98,7 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
         jLabel3.setText("Experiencia");
 
         btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnRegistrar.setText("Registrar");
+        btnRegistrar.setText("Registrar Postulante");
         btnRegistrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRegistrarActionPerformed(evt);
@@ -127,41 +128,53 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setText("Ingrese las habilidades del postulante");
+        jLabel4.setAlignmentX(0.5F);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(150, 150, 150)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(comboTemas, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(33, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(spinnerNivel)
-                                .addGap(40, 40, 40)
-                                .addComponent(buttonAgregarExperiencia, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(buttonEliminarExp, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(25, Short.MAX_VALUE))
+                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel1)
+                                    .addComponent(jLabel2))
+                                .addGap(150, 150, 150)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(comboTemas, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(spinnerNivel, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(40, 40, 40)
+                                        .addComponent(buttonAgregarExperiencia, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 517, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(buttonEliminarExp, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 326, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(29, 29, 29))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 361, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(105, 105, 105))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(17, 17, 17)
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(comboTemas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -187,13 +200,13 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnRegistrar)
                     .addComponent(btnCancelar))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addGap(26, 26, 26))
         );
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(10, 10, 580, 420);
 
-        setBounds(0, 0, 613, 404);
+        setBounds(0, 0, 613, 464);
     }// </editor-fold>//GEN-END:initComponents
 
     private void comboTemasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboTemasActionPerformed
@@ -210,11 +223,12 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
             String[] expValor = seleccionado.split(" ");
             String nombreExpElegida = expValor[0];
             Tematica tematicaAEliminar = modelo.devolverTematicaNombre(nombreExpElegida);
+
             experienciaElegidas.remove(tematicaAEliminar);
             cargarListaExperiencia();            
         }
     }//GEN-LAST:event_buttonEliminarExpActionPerformed
-    
+
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
         postulante.setExperiencia(experienciaElegidas);
@@ -231,8 +245,13 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
         String tematicaElegidaString = (String) this.comboTemas.getSelectedItem();
         Tematica tematicaElegida = modelo.devolverTematicaNombre(tematicaElegidaString);
         int valorSpinner = (int) spinnerNivel.getValue();
-        experienciaElegidas.put(tematicaElegida, valorSpinner);
-        cargarListaExperiencia();
+        if (tematicaElegida.getNombre() == "default") {
+            JOptionPane.showMessageDialog(VentanaTematicasPostulante.this, "No se seleccionó una experiencia a agregar", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            experienciaElegidas.put(tematicaElegida, valorSpinner);
+            cargarListaExperiencia();
+        }
+
     }//GEN-LAST:event_buttonAgregarExperienciaActionPerformed
 
     /**
@@ -248,6 +267,7 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
@@ -257,4 +277,5 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
     private Sistema modelo;
     private Postulante postulante;
     private HashMap<Tematica, Integer> experienciaElegidas;
+    private Postulante postulanteActual;
 }
