@@ -29,6 +29,10 @@ public class Sistema {
         return postulantes;
     }
 
+    public ArrayList<Puesto> obtenerPuestos() {
+        return puestos;
+    }
+
     public ArrayList<Postulante> agregarPostulante(Postulante postulante) {
         postulantes.add(postulante);
         return postulantes;
@@ -50,6 +54,41 @@ public class Sistema {
             nombres.add(nombre);
         }
         return nombres;
+    }
+
+    public ArrayList<Postulante> postulantesPorTemaNivel(Tematica[] temas, int nivel) {
+        ArrayList<Postulante> aptos = new ArrayList<Postulante>();
+        for (Postulante postulante : postulantes) {
+            boolean apto = true;
+            HashMap<Tematica, Integer> expPostulante = postulante.getExperiencia();
+            for (int i = 0; i < temas.length && apto; i++) {
+                //primero me fijo si el postulante tiene la habilidad dada dentro de su experiencia
+                apto = expPostulante.containsKey(temas[i]);
+                //luego nos fijamos si el nivel en esta habilidad es mayor al necesario
+                if (apto && expPostulante.get(temas[i]) >= nivel) {
+                    aptos.add(postulante);
+                }
+            }
+        }
+        return aptos;
+    }
+
+    public HashMap<Postulante, Integer> ultimasEntrevistasPostulantes(Postulante[] posts) {
+        HashMap<Postulante, Integer> ret = new HashMap<Postulante, Integer>();
+        for (Postulante post : posts) {
+            Boolean hallado = false;
+            for (int i = entrevistas.size() - 1; i > 0 && !hallado; i--) {
+                Entrevista entrevistaActual = entrevistas.get(i);
+                hallado = entrevistaActual.getEntrevistado().equals(post);
+                if (hallado) {
+                    ret.put(post, entrevistaActual.getPuntaje());
+                }
+            }
+            if (!hallado) {
+                ret.put(post, 0);
+            }
+        }
+        return ret;
     }
 
     public Boolean nombreEsUnico(String nombre) {
@@ -81,7 +120,7 @@ public class Sistema {
         return !repetida;
     }
 
-    public Boolean PuestoEsUnico(String nomb) {
+    public Boolean puestoEsUnico(String nomb) {
         Boolean repetido = false;
         for (int i = 0; i < puestos.size() && !repetido; i++) {
             Puesto puesto = puestos.get(i);

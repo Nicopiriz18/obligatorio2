@@ -25,6 +25,16 @@ public class Puesto {
     public String getNombre() {
         return nombre;
     }
+
+    public ArrayList<Tematica> getTemas() {
+        return temas;
+    }
+    
+
+    @Override
+    public String toString() {
+        return nombre;
+    }
     
     
 }

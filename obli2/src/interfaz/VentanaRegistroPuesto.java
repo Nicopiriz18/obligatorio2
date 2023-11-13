@@ -258,7 +258,10 @@ public class VentanaRegistroPuesto extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Debe completar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
-        validos = modelo.PuestoEsUnico(nombre);
+        if (validos && !modelo.puestoEsUnico(nombre)) {
+            JOptionPane.showMessageDialog(this, "Ya existe un puesto con el nombre especificado. El nombre del puesto no puede repetirse", "Error", JOptionPane.ERROR_MESSAGE);
+            validos = false;
+        }
         if (validos) {
             Puesto puesto = new Puesto(nombre, selectedRadioButton, temas);
             modelo.agregarPuesto(puesto);
@@ -304,7 +307,7 @@ public class VentanaRegistroPuesto extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonAgregarExperienciaActionPerformed
 
     private void buttonAgregarExperiencia2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarExperiencia2ActionPerformed
-        Tematica seleccionado = (Tematica)listaTemas.getSelectedValue();
+        Tematica seleccionado = (Tematica) listaTemas.getSelectedValue();
         if (seleccionado.equals(null)) {
             JOptionPane.showMessageDialog(this, "No se seleccionó un tema a eliminar", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
