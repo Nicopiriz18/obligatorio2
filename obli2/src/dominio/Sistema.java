@@ -14,6 +14,10 @@ public class Sistema {
     public Sistema() {
         this.tematicas = new ArrayList<Tematica>();
         this.postulantes = new ArrayList<Postulante>();
+        this.evaluadores = new ArrayList<Evaluador>();
+        this.entrevistas = new ArrayList<Entrevista>();
+        this.puestos = new ArrayList<Puesto>();
+
     }
 
     public ArrayList<Tematica> agregarTematica(Tematica tematica) {
@@ -117,9 +121,15 @@ public class Sistema {
             Postulante post = postulantes.get(i);
             repetida = post.getCedula() == ced;
         }
+        for (int i = 0; i < evaluadores.size() && !repetida; i++) {
+            Evaluador ev = evaluadores.get(i);
+            repetida = ev.getCedula() == ced;
+        }
         return !repetida;
     }
-
+    public ArrayList<Evaluador> obtenerEvaluadores() {
+        return evaluadores;
+    }
     public Boolean puestoEsUnico(String nomb) {
         Boolean repetido = false;
         for (int i = 0; i < puestos.size() && !repetido; i++) {

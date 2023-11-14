@@ -9,9 +9,6 @@ import javax.swing.JRadioButton;
 
 public class AltaPostulante extends javax.swing.JFrame {
 
-    /**
-     * Creates new form altaPostulante
-     */
     public AltaPostulante(Sistema sis) {
         initComponents();
         modelo = sis;

@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/manue/Desktop/YO/ORT/prog2/obligatorio2/obli2/src/interfaz/VentanaTematicasPostulante.java</file>
             <file>file:/C:/Users/manue/Desktop/YO/ORT/prog2/obligatorio2/obli2/src/dominio/Puesto.java</file>
             <file>file:/C:/Users/manue/Desktop/YO/ORT/prog2/obligatorio2/obli2/src/interfaz/VentanaIngresoEntrevista.java</file>
@@ -16,6 +17,11 @@
             <file>file:/C:/Users/manue/Desktop/YO/ORT/prog2/obligatorio2/obli2/src/proyecto/Obli2.java</file>
             <file>file:/C:/Users/manue/Desktop/YO/ORT/prog2/obligatorio2/obli2/src/interfaz/VentanaRegistroEvaluador.java</file>
             <file>file:/C:/Users/manue/Desktop/YO/ORT/prog2/obligatorio2/obli2/src/dominio/Persona.java</file>
+=======
+            <file>file:/C:/Users/nicol/facultad/programacion/obligatorio2/obli2/src/dominio/Sistema.java</file>
+            <file>file:/C:/Users/nicol/facultad/programacion/obligatorio2/obli2/src/interfaz/VentanaRegistroEvaluador.java</file>
+            <file>file:/C:/Users/nicol/facultad/programacion/obligatorio2/obli2/src/proyecto/Obli2.java</file>
+>>>>>>> da6bc155695b0b93b031a55c542a49b4e6cc8c72
         </group>
     </open-files>
 </project-private>
