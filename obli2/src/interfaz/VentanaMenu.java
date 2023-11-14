@@ -4,8 +4,9 @@
  */
 package interfaz;
 
-import dominio.Sistema;
+import dominio.*;
 import interfaz.*;
+import javax.swing.*;
 
 /**
  *
