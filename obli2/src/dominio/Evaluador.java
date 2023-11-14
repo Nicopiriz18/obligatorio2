@@ -29,4 +29,8 @@ public class Evaluador extends Persona {
     public void setAnoIngresoEmpresa(int anoIngresoEmpresa) {
         this.anoIngresoEmpresa = anoIngresoEmpresa;
     }
+    @Override
+    public String toString(){
+        return this.getNombre();
+    }
 }

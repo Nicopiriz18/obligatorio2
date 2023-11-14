@@ -17,6 +17,16 @@ public class Entrevista {
     private String comentarios;
     private int id;
 
+    public Entrevista(Evaluador evaluador, Postulante entrevistado, int puntaje, String comentarios, int id) {
+        this.evaluador = evaluador;
+        this.entrevistado = entrevistado;
+        this.puntaje = puntaje;
+        this.comentarios = comentarios;
+        this.id = id;
+    }
+    
+    
+
     public Evaluador getEvaluador() {
         return evaluador;
     }

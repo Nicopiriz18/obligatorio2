@@ -216,24 +216,28 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
     private void buttonEliminarExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarExpActionPerformed
         // TODO add your handling code here:
         String seleccionado = listaTemas.getSelectedValue();
-        System.out.println(seleccionado);
-        if(seleccionado == null || seleccionado == ""){
+        if (seleccionado == null || seleccionado == "") {
             JOptionPane.showMessageDialog(VentanaTematicasPostulante.this, "No se seleccionó una experiencia a eliminar", "Error", JOptionPane.ERROR_MESSAGE);
-        }else{
+        } else {
             String[] expValor = seleccionado.split(" ");
             String nombreExpElegida = expValor[0];
             Tematica tematicaAEliminar = modelo.devolverTematicaNombre(nombreExpElegida);
 
             experienciaElegidas.remove(tematicaAEliminar);
-            cargarListaExperiencia();            
+            cargarListaExperiencia();
         }
     }//GEN-LAST:event_buttonEliminarExpActionPerformed
 
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         // TODO add your handling code here:
-        postulante.setExperiencia(experienciaElegidas);
-        modelo.agregarPostulante(postulante);
-        this.dispose();
+        if (experienciaElegidas.size() == 0) {
+            JOptionPane.showMessageDialog(VentanaTematicasPostulante.this, "Debe seleccionar al menos una habilidad del postulante.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            postulante.setExperiencia(experienciaElegidas);
+            modelo.agregarPostulante(postulante);
+            JOptionPane.showMessageDialog(VentanaTematicasPostulante.this, "Se registró al postulante con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            this.dispose();
+        }
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed

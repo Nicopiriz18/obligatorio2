@@ -4,6 +4,7 @@ import dominio.*;
 import javax.swing.*;
 
 public class VentanaRegistroTematica extends javax.swing.JFrame {
+
     public VentanaRegistroTematica(Sistema sis) {
         initComponents();
         modelo = sis;
@@ -56,7 +57,7 @@ public class VentanaRegistroTematica extends javax.swing.JFrame {
         });
 
         btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnCancelar.setText("Canelar");
+        btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -82,7 +83,7 @@ public class VentanaRegistroTematica extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(48, 48, 48))
         );
@@ -102,7 +103,7 @@ public class VentanaRegistroTematica extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
-                    .addComponent(btnRegistrar))
+                    .addComponent(btnRegistrar, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(8, 8, 8))
         );
 
@@ -136,15 +137,15 @@ public class VentanaRegistroTematica extends javax.swing.JFrame {
     private void btnRegistrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegistrarActionPerformed
         if (nombreTematica.getText().isEmpty() || descripcionTematica.getText().isEmpty()) {
             JOptionPane.showMessageDialog(VentanaRegistroTematica.this, "Debe llenar ambos campos.", "Error", JOptionPane.ERROR_MESSAGE);
-        } else if(modelo.nombreEsUnico(nombreTematica.getText())){
-            JOptionPane.showMessageDialog(VentanaRegistroTematica.this, "El nombre debe ser unico", "Error", JOptionPane.ERROR_MESSAGE);
-        }else {
+        } else if (modelo.nombreEsUnico(nombreTematica.getText())) {
+            JOptionPane.showMessageDialog(VentanaRegistroTematica.this, "Ya existe una tematica con el nombre indicado. El nombre debe ser unico", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
             Tematica tematica = new Tematica(nombreTematica.getText(), descripcionTematica.getText());
             modelo.agregarTematica(tematica);
+            JOptionPane.showMessageDialog(VentanaRegistroTematica.this, "Registro exitoso.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
             nombreTematica.setText("");
             descripcionTematica.setText("");
         }
-
     }//GEN-LAST:event_btnRegistrarActionPerformed
 
 //    /**
@@ -194,5 +195,5 @@ public class VentanaRegistroTematica extends javax.swing.JFrame {
     private javax.swing.JTextField nombreTematica;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
-    
+
 }

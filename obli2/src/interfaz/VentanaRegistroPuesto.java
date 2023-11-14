@@ -16,6 +16,7 @@ public class VentanaRegistroPuesto extends javax.swing.JFrame {
     public VentanaRegistroPuesto(Sistema sis) {
         initComponents();
         modelo = sis;
+        temas = new ArrayList<Tematica>();
         cargarCombo();
     }
 
@@ -69,7 +70,7 @@ public class VentanaRegistroPuesto extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Alta de postulante");
+        jLabel1.setText("Alta de puesto");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Nombre:");
@@ -250,22 +251,22 @@ public class VentanaRegistroPuesto extends javax.swing.JFrame {
         } else if (radioMixto.isSelected()) {
             selectedRadioButton = "mixto";
         }
-        String[] valores = {nombre, selectedRadioButton};
         boolean validos = true;
-        for (int i = 0; i < valores.length && validos; i++) {
-            if (valores[i].strip().equals("") || valores[i] == null) {
-                validos = false;
-                JOptionPane.showMessageDialog(this, "Debe completar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-        if (validos && !modelo.puestoEsUnico(nombre)) {
+        //se recorre los distintos tipos de errores que pueden ocurrir para darle al usuario un tipo de error no generico
+        if (nombre.strip().equals("") || selectedRadioButton == null || selectedRadioButton.equals("")) {
+            JOptionPane.showMessageDialog(this, "Debe completar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+            validos = false;
+        } else if (validos && !modelo.puestoEsUnico(nombre)) {
             JOptionPane.showMessageDialog(this, "Ya existe un puesto con el nombre especificado. El nombre del puesto no puede repetirse", "Error", JOptionPane.ERROR_MESSAGE);
+            validos = false;
+        } else if (validos && temas.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Se debe ingresar al menos un tema para el puesto", "Error", JOptionPane.ERROR_MESSAGE);
             validos = false;
         }
         if (validos) {
             Puesto puesto = new Puesto(nombre, selectedRadioButton, temas);
             modelo.agregarPuesto(puesto);
-            JOptionPane.showMessageDialog(this, "Puesto agregado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Puesto agregado con éxito.", "Operación exitosa.", JOptionPane.INFORMATION_MESSAGE);
             this.dispose();
         }
     }//GEN-LAST:event_btnSiguienteActionPerformed
@@ -308,7 +309,7 @@ public class VentanaRegistroPuesto extends javax.swing.JFrame {
 
     private void buttonAgregarExperiencia2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarExperiencia2ActionPerformed
         Tematica seleccionado = (Tematica) listaTemas.getSelectedValue();
-        if (seleccionado.equals(null)) {
+        if (seleccionado == null) {
             JOptionPane.showMessageDialog(this, "No se seleccionó un tema a eliminar", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
             temas.remove(seleccionado);

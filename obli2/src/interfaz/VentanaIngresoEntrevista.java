@@ -1,13 +1,19 @@
 package interfaz;
+
 import dominio.*;
+import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
 
 public class VentanaIngresoEntrevista extends javax.swing.JFrame {
-    
+
     public VentanaIngresoEntrevista(Sistema sis) {
         initComponents();
         modelo = sis;
+        cargarListas();
+
     }
-    public void cargarListas(){
+
+    public void cargarListas() {
         listaEvaluadores.setListData(modelo.obtenerEvaluadores().toArray());
         listaPostulantes.setListData(modelo.obtenerPostulantes().toArray());
     }
@@ -29,7 +35,8 @@ public class VentanaIngresoEntrevista extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         listaPostulantes = new javax.swing.JList();
-        spinnerPuntaje = new javax.swing.JSpinner();
+        SpinnerNumberModel spinnerModel = new SpinnerNumberModel(0, 0, 100, 1);
+        spinnerPuntaje = new javax.swing.JSpinner(spinnerModel);
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         btnIngresar = new javax.swing.JButton();
@@ -70,6 +77,11 @@ public class VentanaIngresoEntrevista extends javax.swing.JFrame {
 
         btnIngresar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnIngresar.setText("Ingresar");
+        btnIngresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnIngresarActionPerformed(evt);
+            }
+        });
 
         btnCancelar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnCancelar.setText("Cancelar");
@@ -160,7 +172,28 @@ public class VentanaIngresoEntrevista extends javax.swing.JFrame {
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
+
+    private void btnIngresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarActionPerformed
+        // TODO add your handling code here:
+        Evaluador eval = (Evaluador) this.listaEvaluadores.getSelectedValue();
+        Postulante post = (Postulante) this.listaPostulantes.getSelectedValue();
+        int puntaje = (int) spinnerPuntaje.getValue();
+        String comentarios = textComentarios.getText();
+
+        if (eval == null || post == null || comentarios.equals("")) {
+            JOptionPane.showMessageDialog(this, "Debe completar todos los campos", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (puntaje < 0 || puntaje > 100) {
+            JOptionPane.showMessageDialog(this, "El puntaje debe estar entre 0 y 100 inclusive.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            int nuevoId = (modelo.devolverIdUltimaEntrevista()+1);
+            Entrevista env = new Entrevista(eval, post, puntaje, comentarios, nuevoId);
+            modelo.agregarEntrevista(env);
+            JOptionPane.showMessageDialog(this, "Entrevista agregada con éxito. El número único asignado a la misma es: " + (nuevoId), "Operación exitosa", JOptionPane.INFORMATION_MESSAGE);
+            dispose();
+        }
+    }//GEN-LAST:event_btnIngresarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

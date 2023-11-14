@@ -37,18 +37,20 @@ public class Sistema {
         return puestos;
     }
 
-    public ArrayList<Postulante> agregarPostulante(Postulante postulante) {
+    public void agregarPostulante(Postulante postulante) {
         postulantes.add(postulante);
-        return postulantes;
     }
 
-    public ArrayList<Evaluador> agregarEvaluador(Evaluador evaluador) {
+    public void agregarEvaluador(Evaluador evaluador) {
         evaluadores.add(evaluador);
-        return evaluadores;
     }
 
     public void agregarPuesto(Puesto puesto) {
         puestos.add(puesto);
+    }
+
+    public void agregarEntrevista(Entrevista env) {
+        entrevistas.add(env);
     }
 
     public ArrayList<String> obtenerNombresTematicas() {
@@ -60,11 +62,14 @@ public class Sistema {
         return nombres;
     }
 
-    public ArrayList<Postulante> postulantesPorTemaNivel(Tematica[] temas, int nivel) {
+    public ArrayList<Postulante> postulantesPorTemaNivel(Tematica[] temas, int nivel, String formato) {
         ArrayList<Postulante> aptos = new ArrayList<Postulante>();
         for (Postulante postulante : postulantes) {
-            boolean apto = true;
+            //primero me fijo si el formato buscado por el postulante coincide con el del puesto
+            boolean apto = formato.toUpperCase().equals(postulante.getFormato().toUpperCase());
+            //luego agarramos la experiencia del postulante estudiado
             HashMap<Tematica, Integer> expPostulante = postulante.getExperiencia();
+            //si el formato coincide, entra en el for   
             for (int i = 0; i < temas.length && apto; i++) {
                 //primero me fijo si el postulante tiene la habilidad dada dentro de su experiencia
                 apto = expPostulante.containsKey(temas[i]);
@@ -81,15 +86,12 @@ public class Sistema {
         HashMap<Postulante, Integer> ret = new HashMap<Postulante, Integer>();
         for (Postulante post : posts) {
             Boolean hallado = false;
-            for (int i = entrevistas.size() - 1; i > 0 && !hallado; i--) {
+            for (int i = entrevistas.size() - 1; i >= 0 && !hallado; i--) {
                 Entrevista entrevistaActual = entrevistas.get(i);
                 hallado = entrevistaActual.getEntrevistado().equals(post);
                 if (hallado) {
                     ret.put(post, entrevistaActual.getPuntaje());
                 }
-            }
-            if (!hallado) {
-                ret.put(post, 0);
             }
         }
         return ret;
@@ -99,7 +101,7 @@ public class Sistema {
         Boolean repetido = false;
         for (int i = 0; i < tematicas.size() && !repetido; i++) {
             Tematica tematica = tematicas.get(i);
-            repetido = tematica.getNombre() == nombre;
+            repetido = tematica.getNombre().toUpperCase().equals(nombre.toUpperCase());
         }
         return repetido;
     }
@@ -127,14 +129,16 @@ public class Sistema {
         }
         return !repetida;
     }
+
     public ArrayList<Evaluador> obtenerEvaluadores() {
         return evaluadores;
     }
+
     public Boolean puestoEsUnico(String nomb) {
         Boolean repetido = false;
         for (int i = 0; i < puestos.size() && !repetido; i++) {
             Puesto puesto = puestos.get(i);
-            repetido = puesto.getNombre().equals(nomb);
+            repetido = puesto.getNombre().toUpperCase().equals(nomb.toUpperCase());
         }
         return !repetido;
     }
@@ -151,7 +155,44 @@ public class Sistema {
         return tem;
     }
 
+    public int devolverIdUltimaEntrevista() {
+        //si el arraylist entrevistas es vacio, se devuelve 0. Si no se devuelve uno mas que el ultimo id
+        int ret = 0;
+        if (!entrevistas.isEmpty()) {
+            ret = entrevistas.get(entrevistas.size() - 1).getId();
+        }
+        return ret;
+    }
+
     public void eliminarPostulante(Postulante post) {
         postulantes.remove(post);
+        //luego se borran todas las entrevistas que tengan el entrevistado dado
+        for (Entrevista entre : entrevistas) {
+            if (entre.getEntrevistado().equals(post)) {
+                entrevistas.remove(entre);
+            }
+        }
+    }
+
+    public int consultarPostulantesTematica(Tematica tem) {
+        int num = 0;
+        for (Postulante post : postulantes) {
+            //checkeamos si el hashmap contiene la clave y si el valor de la misma es mayor que 5. De serlo, se suma uno a num
+            if (post.getExperiencia().containsKey(tem) && post.getExperiencia().get(tem) > 5) {
+                num++;
+            }
+        }
+        return num;
+
+    }
+
+    public int consultarPuestosTematica(Tematica tem) {
+        int num = 0;
+        for(Puesto puesto : puestos){
+            if(puesto.getTemas().contains(tem)){
+                num ++;
+            }
+        }
+        return num;
     }
 }

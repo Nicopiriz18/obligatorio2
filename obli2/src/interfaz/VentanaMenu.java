@@ -45,6 +45,7 @@ public class VentanaMenu extends javax.swing.JFrame {
         jMenu2 = new javax.swing.JMenu();
         consultaPuesto = new javax.swing.JMenuItem();
         historiaPostulante = new javax.swing.JMenuItem();
+        consultaPorTematica = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -127,10 +128,23 @@ public class VentanaMenu extends javax.swing.JFrame {
         jMenu2.setText("Consultas");
 
         consultaPuesto.setText("Consulta para puesto");
+        consultaPuesto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultaPuestoActionPerformed(evt);
+            }
+        });
         jMenu2.add(consultaPuesto);
 
         historiaPostulante.setText("Historia de postulante");
         jMenu2.add(historiaPostulante);
+
+        consultaPorTematica.setText("Consulta por tematica");
+        consultaPorTematica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                consultaPorTematicaActionPerformed(evt);
+            }
+        });
+        jMenu2.add(consultaPorTematica);
 
         jMenuBar1.add(jMenu2);
 
@@ -186,9 +200,22 @@ public class VentanaMenu extends javax.swing.JFrame {
         vent.setVisible(true);
     }//GEN-LAST:event_registroEvaluadorActionPerformed
 
+    private void consultaPuestoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaPuestoActionPerformed
+        // TODO add your handling code here:
+        VentanaConsultaPuesto vent = new VentanaConsultaPuesto(modelo);
+        vent.setVisible(true);
+    }//GEN-LAST:event_consultaPuestoActionPerformed
+
+    private void consultaPorTematicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultaPorTematicaActionPerformed
+        // TODO add your handling code here:
+        VentanaConsultaTematica vent = new VentanaConsultaTematica(modelo);
+        vent.setVisible(true);
+    }//GEN-LAST:event_consultaPorTematicaActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem altaPostulante;
     private javax.swing.JMenuItem bajaPostulante;
+    private javax.swing.JMenuItem consultaPorTematica;
     private javax.swing.JMenuItem consultaPuesto;
     private javax.swing.JMenuItem historiaPostulante;
     private javax.swing.JMenuItem ingresoEntrevista;
@@ -202,5 +229,5 @@ public class VentanaMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem registroPuesto;
     private javax.swing.JMenuItem registroTematica;
     // End of variables declaration//GEN-END:variables
-    private Sistema modelo; 
+    private Sistema modelo;
 }

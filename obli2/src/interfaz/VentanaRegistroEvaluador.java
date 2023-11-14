@@ -251,6 +251,9 @@ public class VentanaRegistroEvaluador extends javax.swing.JFrame {
             Evaluador eval = new Evaluador(nombre,cedulaInt, direccion, valorSpinner);
             modelo.agregarEvaluador(eval);
             JOptionPane.showMessageDialog(this, "Evaluador agregado con éxito.", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+            cedulaEvaluador.setText("");
+            direccionEvaluador.setText("");
+            nombreEvaluador.setText("");
         }
     }//GEN-LAST:event_buttonRegistrarEvaluadorActionPerformed
 

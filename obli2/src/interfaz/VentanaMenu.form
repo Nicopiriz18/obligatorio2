@@ -75,11 +75,22 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consulta para puesto"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultaPuestoActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="historiaPostulante">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Historia de postulante"/>
               </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="consultaPorTematica">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Consulta por tematica"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="consultaPorTematicaActionPerformed"/>
+              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>

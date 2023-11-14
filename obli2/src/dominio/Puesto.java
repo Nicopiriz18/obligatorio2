@@ -29,6 +29,11 @@ public class Puesto {
     public ArrayList<Tematica> getTemas() {
         return temas;
     }
+
+    public String getFormato() {
+        return formato;
+    }
+    
     
 
     @Override

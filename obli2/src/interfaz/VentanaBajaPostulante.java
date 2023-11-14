@@ -64,6 +64,11 @@ public class VentanaBajaPostulante extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jButton2.setText("Cancelar");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -105,13 +110,18 @@ public class VentanaBajaPostulante extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Postulante postSeleccionado = (Postulante) listaPostulantes.getSelectedValue();
-        if (postSeleccionado.equals(null)) {
+        if (postSeleccionado == null) {
             JOptionPane.showMessageDialog(VentanaBajaPostulante.this, "No se seleccionó postulante a eliminar", "Error", JOptionPane.ERROR_MESSAGE);
         }else{
             modelo.eliminarPostulante(postSeleccionado);
             cargarLista();
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

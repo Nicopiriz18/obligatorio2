@@ -6,10 +6,13 @@ package interfaz;
 
 import dominio.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
+import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
 import javax.swing.JOptionPane;
+import javax.swing.SpinnerNumberModel;
 
 /**
  *
@@ -24,6 +27,8 @@ public class VentanaConsultaPuesto extends javax.swing.JFrame {
         modelo = sis;
         initComponents();
         cargarListaPuestos();
+        puestoSeleccionado = null;
+        posiblesPostulantes = null;
     }
 
     public void cargarListaPuestos() {
@@ -44,7 +49,8 @@ public class VentanaConsultaPuesto extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         listaPuestos = new javax.swing.JList();
-        spinnerNivel = new javax.swing.JSpinner();
+        SpinnerNumberModel spinnerModel = new SpinnerNumberModel(1, 1, 10, 1);
+        spinnerNivel = new javax.swing.JSpinner(spinnerModel);
         jLabel6 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel3 = new javax.swing.JLabel();
@@ -84,7 +90,7 @@ public class VentanaConsultaPuesto extends javax.swing.JFrame {
         });
 
         listaPostulantesPuesto.setModel(new javax.swing.AbstractListModel() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
+            String[] strings = {};
             public int getSize() { return strings.length; }
             public Object getElementAt(int i) { return strings[i]; }
         });
@@ -138,7 +144,7 @@ public class VentanaConsultaPuesto extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);
@@ -169,33 +175,53 @@ public class VentanaConsultaPuesto extends javax.swing.JFrame {
 
     private void buttonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonCancelarActionPerformed
         // TODO add your handling code here:
+        dispose();
     }//GEN-LAST:event_buttonCancelarActionPerformed
 
     private void buttonConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonConsultarActionPerformed
         Puesto seleccionado = (Puesto) listaPuestos.getSelectedValue();
         int valorSpinner = (int) spinnerNivel.getValue();
 
-        if (seleccionado.equals(null)) {
+        if (seleccionado == null) {
             JOptionPane.showMessageDialog(this, "No se seleccionó un puesto a consultar", "Error", JOptionPane.ERROR_MESSAGE);
+        } else if (valorSpinner < 1 || valorSpinner > 10) {
+            JOptionPane.showMessageDialog(this, "El nivel debe ser un numero entre 1 y 10", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
+            puestoSeleccionado = seleccionado;
             Tematica[] temasPuesto = seleccionado.getTemas().toArray(new Tematica[0]);
+            String formato = seleccionado.getFormato();
             //se hallan los postulantes que tienen ese nivel o mas en las tematicas elegidas
-            Postulante[] postulantesAptos = modelo.postulantesPorTemaNivel(temasPuesto, valorSpinner).toArray(new Postulante[0]);
-            //se hallan las ultimas entrevistas de dichos postulantes
+            Postulante[] postulantesAptos = modelo.postulantesPorTemaNivel(temasPuesto, valorSpinner, formato).toArray(new Postulante[0]);
+            //se hallan las ultimas entrevistas de dichos postulantes, si hay alguno de esos postulantes sin entrevistas no se devuelve
             HashMap<Postulante, Integer> postsConPuntaje = modelo.ultimasEntrevistasPostulantes(postulantesAptos);
             //se crea una lista de las claves del hashmap
             List<Postulante> clavesOrdenadas = new ArrayList<>(postsConPuntaje.keySet());
-            //se ordena esa lista en funcion de los puntajes (se espera orden decreciente)
+            //se ordena esa lista en funcion de los puntajes (lo deja en orden creciente, por eso luego lo invertimos)
             clavesOrdenadas.sort(Comparator.comparing(postsConPuntaje::get));
-            
-            listaPostulantesPuesto.setListData(clavesOrdenadas.toArray());
-            
+            Collections.reverse(clavesOrdenadas);
+            if (clavesOrdenadas.size() > 0) {
+                listaPostulantesPuesto.setListData(clavesOrdenadas.toArray());
+                posiblesPostulantes = clavesOrdenadas.toArray(new Postulante[0]);
+            }
         }
 
     }//GEN-LAST:event_buttonConsultarActionPerformed
 
     private void buttonExportarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonExportarActionPerformed
         // TODO add your handling code here:
+        if (listaPostulantesPuesto.getModel().getSize() == 0 || puestoSeleccionado == null || posiblesPostulantes == null) {
+            JOptionPane.showMessageDialog(this, "Datos a exportar no existentes. \nAsegurese de que existan postulantes posibles en la lista de debajo\n y que haya un puesto con la consulta realizada.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            ArchivoGrabacion arch = new ArchivoGrabacion("Cosulta.txt", false);
+            arch.grabarLinea(puestoSeleccionado.getNombre());
+            for (Postulante post : posiblesPostulantes) {
+                arch.grabarLinea(post.getNombre() + " - " + post.getCedula() + " - " + post.getMail());
+            }
+            arch.cerrar();
+            JOptionPane.showMessageDialog(this, "Archivo creado con exito.\n Puede encontrarlo en la misma carpeta que el programa bajo el nombre 'Consulta.txt'", "Operación exitosa", JOptionPane.INFORMATION_MESSAGE);
+
+        }
+
     }//GEN-LAST:event_buttonExportarActionPerformed
 
     /**
@@ -219,4 +245,6 @@ public class VentanaConsultaPuesto extends javax.swing.JFrame {
     private javax.swing.JSpinner spinnerNivel;
     // End of variables declaration//GEN-END:variables
     private Sistema modelo;
+    private Puesto puestoSeleccionado;
+    private Postulante[] posiblesPostulantes;
 }
