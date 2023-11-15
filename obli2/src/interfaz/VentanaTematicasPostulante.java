@@ -5,11 +5,12 @@ import dominio.*;
 import javax.swing.*;
 import interfaz.AltaPostulante;
 
-public class VentanaTematicasPostulante extends javax.swing.JFrame {
+public class VentanaTematicasPostulante extends javax.swing.JFrame implements Observer {
 
     public VentanaTematicasPostulante(Sistema sis, Postulante post) {
         initComponents();
         modelo = sis;
+        modelo.addObserver(this);
         postulante = post;
         cargarCombo();
         experienciaElegidas = new HashMap<>();
@@ -21,6 +22,13 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
         for (Tematica tema : temas) {
             comboTemas.addItem(tema.getNombre());
         }
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        cargarCombo();
+        experienciaElegidas = new HashMap<>();
+        cargarListaExperiencia();
     }
 
     public String[] arrayHashmap() {
@@ -66,6 +74,7 @@ public class VentanaTematicasPostulante extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

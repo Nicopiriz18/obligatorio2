@@ -5,12 +5,13 @@
 package dominio;
 
 import dominio.*;
+import java.io.Serializable;
 
 /**
  *
  * @author manue
  */
-public class Evaluador extends Persona {
+public class Evaluador extends Persona implements Serializable {
     private int anoIngresoEmpresa;
 
     public Evaluador(String nombre, int cedula, String direccion, int anoIngresoEmpresa) {

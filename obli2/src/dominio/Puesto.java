@@ -4,13 +4,14 @@
  */
 package dominio;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  *
  * @author manue
  */
-public class Puesto {
+public class Puesto implements Serializable{
     //nombre del puesto tiene que ser unico
     private String nombre;
     private String formato;

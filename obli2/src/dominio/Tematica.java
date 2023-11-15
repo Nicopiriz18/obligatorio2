@@ -1,7 +1,8 @@
 package dominio;
 
+import java.io.Serializable;
 import java.util.*;
-public class Tematica extends Observable {
+public class Tematica extends Observable implements Serializable{
     private String nombre;
     private String descripcion;
     

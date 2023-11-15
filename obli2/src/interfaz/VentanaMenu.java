@@ -6,6 +6,10 @@ package interfaz;
 
 import dominio.*;
 import interfaz.*;
+import java.io.IOException;
+import java.io.ObjectOutputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import javax.swing.*;
 
 /**
@@ -19,7 +23,6 @@ public class VentanaMenu extends javax.swing.JFrame {
      */
     public VentanaMenu(Sistema sis) {
         initComponents();
-        JOptionPane.YES_NO_OPTION();
         modelo = sis;
     }
 
@@ -49,6 +52,11 @@ public class VentanaMenu extends javax.swing.JFrame {
         consultaPorTematica = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel1.setText("Bienvenido.");
@@ -212,6 +220,23 @@ public class VentanaMenu extends javax.swing.JFrame {
         VentanaConsultaTematica vent = new VentanaConsultaTematica(modelo);
         vent.setVisible(true);
     }//GEN-LAST:event_consultaPorTematicaActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        guardarSistema();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void guardarSistema() {
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(
+                    Files.newOutputStream(Paths.get("datos.ser")));
+            out.writeObject(modelo);
+            out.close();
+        } catch (IOException er) {
+            System.out.println("Error al serializar archivo");
+            System.exit(1);
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem altaPostulante;

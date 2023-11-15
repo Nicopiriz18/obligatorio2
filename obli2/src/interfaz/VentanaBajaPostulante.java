@@ -5,19 +5,22 @@
 package interfaz;
 
 import dominio.*;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author nicol
  */
-public class VentanaBajaPostulante extends javax.swing.JFrame {
+public class VentanaBajaPostulante extends javax.swing.JFrame implements Observer {
 
     /**
      * Creates new form VentanaBajaPostulante
      */
     public VentanaBajaPostulante(Sistema mod) {
         modelo = mod;
+        modelo.addObserver(this);
         initComponents();
         cargarLista();
     }
@@ -42,6 +45,7 @@ public class VentanaBajaPostulante extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -122,10 +126,10 @@ public class VentanaBajaPostulante extends javax.swing.JFrame {
         // TODO add your handling code here:
         dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
+    @Override
+    public void update(Observable o, Object arg){
+        cargarLista();
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

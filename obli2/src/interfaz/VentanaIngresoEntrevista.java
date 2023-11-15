@@ -1,14 +1,17 @@
 package interfaz;
 
 import dominio.*;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 
-public class VentanaIngresoEntrevista extends javax.swing.JFrame {
+public class VentanaIngresoEntrevista extends javax.swing.JFrame implements Observer {
 
     public VentanaIngresoEntrevista(Sistema sis) {
         initComponents();
         modelo = sis;
+        modelo.addObserver(this);
         cargarListas();
 
     }
@@ -16,6 +19,11 @@ public class VentanaIngresoEntrevista extends javax.swing.JFrame {
     public void cargarListas() {
         listaEvaluadores.setListData(modelo.obtenerEvaluadores().toArray());
         listaPostulantes.setListData(modelo.obtenerPostulantes().toArray());
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        cargarListas();
     }
 
     /**
@@ -44,6 +52,7 @@ public class VentanaIngresoEntrevista extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         textComentarios = new javax.swing.JTextArea();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -187,7 +196,7 @@ public class VentanaIngresoEntrevista extends javax.swing.JFrame {
         } else if (puntaje < 0 || puntaje > 100) {
             JOptionPane.showMessageDialog(this, "El puntaje debe estar entre 0 y 100 inclusive.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            int nuevoId = (modelo.devolverIdUltimaEntrevista()+1);
+            int nuevoId = (modelo.devolverIdUltimaEntrevista() + 1);
             Entrevista env = new Entrevista(eval, post, puntaje, comentarios, nuevoId);
             modelo.agregarEntrevista(env);
             JOptionPane.showMessageDialog(this, "Entrevista agregada con éxito. El número único asignado a la misma es: " + (nuevoId), "Operación exitosa", JOptionPane.INFORMATION_MESSAGE);

@@ -4,13 +4,14 @@
  */
 package dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author manue
  */
-public class Entrevista {
+public class Entrevista implements Serializable{
     private Evaluador evaluador;
     private Postulante entrevistado;
     private int puntaje;

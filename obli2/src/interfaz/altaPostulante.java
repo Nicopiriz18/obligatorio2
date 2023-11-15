@@ -3,6 +3,7 @@ package interfaz;
 import interfaz.*;
 import dominio.*;
 import java.util.Enumeration;
+import java.util.Observer;
 import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
@@ -45,6 +46,7 @@ public class AltaPostulante extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         btnSiguiente = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -322,7 +324,7 @@ public class AltaPostulante extends javax.swing.JFrame {
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
