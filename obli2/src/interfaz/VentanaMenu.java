@@ -19,6 +19,7 @@ public class VentanaMenu extends javax.swing.JFrame {
      */
     public VentanaMenu(Sistema sis) {
         initComponents();
+        JOptionPane.YES_NO_OPTION();
         modelo = sis;
     }
 
