@@ -64,7 +64,7 @@ public class Postulante extends Persona implements Serializable{
     }
     @Override
     public String toString(){
-        return this.getNombre() + "("+ this.getCedula() + ")";
+        return this.getNombre();
     }
     
 }

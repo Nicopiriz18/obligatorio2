@@ -166,6 +166,18 @@ public class Sistema extends Observable implements Serializable {
         return tem;
     }
 
+    public Postulante devolverPostulanteCedula(int ced) {
+        Postulante post = new Postulante("default", 0, "default", "default", "default", "default", "default");
+        boolean hallada = false;
+        for (int i = 0; i < postulantes.size() && !hallada; i++) {
+            if (postulantes.get(i).getCedula() == ced) {
+                post = postulantes.get(i);
+                hallada = true;
+            }
+        }
+        return post;
+    }
+
     public int devolverIdUltimaEntrevista() {
         //si el arraylist entrevistas es vacio, se devuelve 0. Si no se devuelve uno mas que el ultimo id
         int ret = 0;
@@ -209,7 +221,7 @@ public class Sistema extends Observable implements Serializable {
         return num;
     }
 
-    public ArrayList<Postulante> obtenerPostulantesOrdenados() {
+    public String[] obtenerPostulantesOrdenadosString() {
         ArrayList<Postulante> postulantesOrdenados = new ArrayList<>(postulantes);
         Collections.sort(postulantesOrdenados, new Comparator<Postulante>() {
             @Override
@@ -218,14 +230,20 @@ public class Sistema extends Observable implements Serializable {
                 return Integer.compare(postu1ante1.getCedula(), postulante2.getCedula());
             }
         });
-        return postulantesOrdenados;
+        String[] postsStringCedula = new String[postulantesOrdenados.size()];
+        for (int i = 0; i < postulantesOrdenados.size(); i++) {
+            Postulante postActual = postulantesOrdenados.get(i);
+            postsStringCedula[i] = postActual.getNombre() + " (" + postActual.getCedula() + ")";
+        }
+        return postsStringCedula;
     }
-    public ArrayList<Entrevista> obtenerEntrevistaPorBusqueda(Postulante postulante, String busqueda){
+
+    public ArrayList<Entrevista> obtenerEntrevistaPorBusqueda(Postulante postulante, String busqueda) {
         ArrayList<Entrevista> entrevistasPorPostulante = obtenerEntrevistasPorPersona(postulante);
         ArrayList<Entrevista> entrevistasPorBusqueda = new ArrayList<>();
-        for (Entrevista entrevista : entrevistasPorPostulante){
+        for (Entrevista entrevista : entrevistasPorPostulante) {
             String comentarios = entrevista.getComentarios();
-            if (comentarios.toLowerCase().contains(busqueda)){
+            if (comentarios.toLowerCase().contains(busqueda)) {
                 entrevistasPorBusqueda.add(entrevista);
             }
         }
