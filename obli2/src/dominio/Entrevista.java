@@ -25,9 +25,6 @@ public class Entrevista implements Serializable{
         this.comentarios = comentarios;
         this.id = id;
     }
-    
-    
-
     public Evaluador getEvaluador() {
         return evaluador;
     }
