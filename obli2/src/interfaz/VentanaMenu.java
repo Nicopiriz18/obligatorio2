@@ -19,7 +19,6 @@ public class VentanaMenu extends javax.swing.JFrame {
      */
     public VentanaMenu(Sistema sis) {
         initComponents();
-        JOptionPane.YES_NO_OPTION();
         modelo = sis;
     }
 
@@ -137,6 +136,11 @@ public class VentanaMenu extends javax.swing.JFrame {
         jMenu2.add(consultaPuesto);
 
         historiaPostulante.setText("Historia de postulante");
+        historiaPostulante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historiaPostulanteActionPerformed(evt);
+            }
+        });
         jMenu2.add(historiaPostulante);
 
         consultaPorTematica.setText("Consulta por tematica");
@@ -212,6 +216,12 @@ public class VentanaMenu extends javax.swing.JFrame {
         VentanaConsultaTematica vent = new VentanaConsultaTematica(modelo);
         vent.setVisible(true);
     }//GEN-LAST:event_consultaPorTematicaActionPerformed
+
+    private void historiaPostulanteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historiaPostulanteActionPerformed
+        // TODO add your handling code here:
+        VentanaHistoriaPostulante vent = new VentanaHistoriaPostulante(modelo);
+        vent.setVisible(true);
+    }//GEN-LAST:event_historiaPostulanteActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem altaPostulante;

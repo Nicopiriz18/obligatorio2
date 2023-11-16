@@ -24,9 +24,6 @@ public class Entrevista {
         this.comentarios = comentarios;
         this.id = id;
     }
-    
-    
-
     public Evaluador getEvaluador() {
         return evaluador;
     }

@@ -63,7 +63,7 @@ public class Postulante extends Persona {
     }
     @Override
     public String toString(){
-        return this.getNombre();
+        return this.getNombre() + "("+ this.getCedula() + ")";
     }
     
 }
