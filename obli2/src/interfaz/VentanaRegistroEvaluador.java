@@ -46,66 +46,48 @@ public class VentanaRegistroEvaluador extends javax.swing.JFrame {
         buttonRegistrarEvaluador = new javax.swing.JButton();
         buttonCancelar = new javax.swing.JButton();
 
-        jPanel1.setLayout(null);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Registro de evaluador");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(180, 24, 246, 32);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nombre:");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(29, 70, 58, 20);
 
         nombreEvaluador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nombreEvaluadorActionPerformed(evt);
             }
         });
-        jPanel1.add(nombreEvaluador);
-        nombreEvaluador.setBounds(221, 68, 337, 26);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Cedula:");
-        jPanel1.add(jLabel3);
-        jLabel3.setBounds(29, 108, 49, 20);
 
         cedulaEvaluador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cedulaEvaluadorActionPerformed(evt);
             }
         });
-        jPanel1.add(cedulaEvaluador);
-        cedulaEvaluador.setBounds(221, 106, 337, 26);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Dirección:");
-        jPanel1.add(jLabel4);
-        jLabel4.setBounds(29, 146, 65, 20);
 
         direccionEvaluador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 direccionEvaluadorActionPerformed(evt);
             }
         });
-        jPanel1.add(direccionEvaluador);
-        direccionEvaluador.setBounds(221, 144, 337, 26);
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Año de ingreso:");
-        jPanel1.add(jLabel7);
-        jLabel7.setBounds(29, 184, 104, 20);
 
         SpinnerNumberModel spinner = new SpinnerNumberModel(1930, 1930, 2023, 1);
         spinnerAno.setModel(spinner);
-        jPanel1.add(spinnerAno);
-        spinnerAno.setBounds(221, 182, 337, 26);
 
         buttonRegistrarEvaluador.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         buttonRegistrarEvaluador.setText("Registrar");
@@ -193,14 +175,14 @@ public class VentanaRegistroEvaluador extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 352, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

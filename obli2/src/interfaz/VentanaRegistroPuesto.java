@@ -4,11 +4,13 @@ import interfaz.*;
 import dominio.*;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.AbstractButton;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
-public class VentanaRegistroPuesto extends javax.swing.JFrame {
+public class VentanaRegistroPuesto extends javax.swing.JFrame implements Observer {
 
     /**
      * Creates new form altaPostulante
@@ -16,8 +18,16 @@ public class VentanaRegistroPuesto extends javax.swing.JFrame {
     public VentanaRegistroPuesto(Sistema sis) {
         initComponents();
         modelo = sis;
+        modelo.addObserver(this);
         temas = new ArrayList<Tematica>();
         cargarCombo();
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        cargarCombo();
+        temas = new ArrayList<Tematica>();
+        cargarListaTemas();
     }
 
     public void cargarCombo() {
@@ -59,6 +69,7 @@ public class VentanaRegistroPuesto extends javax.swing.JFrame {
         buttonAgregarExperiencia2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         comboTemas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] {}));
@@ -157,6 +168,10 @@ public class VentanaRegistroPuesto extends javax.swing.JFrame {
         panelLayout.setHorizontalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelLayout.createSequentialGroup()
+                .addGap(243, 243, 243)
+                .addComponent(jLabel1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(panelLayout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelLayout.createSequentialGroup()
@@ -190,16 +205,10 @@ public class VentanaRegistroPuesto extends javax.swing.JFrame {
                                     .addComponent(buttonAgregarExperiencia2))
                                 .addGap(0, 111, Short.MAX_VALUE))))
                     .addGroup(panelLayout.createSequentialGroup()
-                        .addComponent(jLabel16)
+                        .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16))
                         .addGap(0, 0, Short.MAX_VALUE))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(71, 71, 71))
-            .addGroup(panelLayout.createSequentialGroup()
-                .addGap(243, 243, 243)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panelLayout.setVerticalGroup(
             panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -5,13 +5,15 @@
 package interfaz;
 
 import dominio.*;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author manue
  */
-public class VentanaConsultaTematica extends javax.swing.JFrame {
+public class VentanaConsultaTematica extends javax.swing.JFrame implements Observer {
 
     /**
      * Creates new form VentanaConsultaTematica
@@ -19,6 +21,7 @@ public class VentanaConsultaTematica extends javax.swing.JFrame {
     public VentanaConsultaTematica(Sistema mod) {
         initComponents();
         modelo = mod;
+        modelo.addObserver(this);
         cargarLista();
     }
 
@@ -26,7 +29,10 @@ public class VentanaConsultaTematica extends javax.swing.JFrame {
         Tematica[] tematicas = modelo.obtenerTematicas().toArray(new Tematica[0]);
         listaTematicas.setListData(tematicas);
     }
-
+    @Override
+    public void update(Observable o, Object arg) {
+        cargarLista();
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -44,7 +50,7 @@ public class VentanaConsultaTematica extends javax.swing.JFrame {
         labelNroPuestos = new javax.swing.JLabel();
         buttonConsultar1 = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         listaTematicas.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };

@@ -2,8 +2,9 @@ package dominio;
 
 import java.util.*;
 import dominio.*;
+import java.io.Serializable;
 
-public class Sistema {
+public class Sistema extends Observable implements Serializable {
 
     private ArrayList<Tematica> tematicas;
     private ArrayList<Postulante> postulantes;
@@ -20,9 +21,11 @@ public class Sistema {
 
     }
 
-    public ArrayList<Tematica> agregarTematica(Tematica tematica) {
+    public void agregarTematica(Tematica tematica) {
         tematicas.add(tematica);
-        return tematicas;
+        setChanged();
+        notifyObservers();
+
     }
 
     public ArrayList<Tematica> obtenerTematicas() {
@@ -39,18 +42,26 @@ public class Sistema {
 
     public void agregarPostulante(Postulante postulante) {
         postulantes.add(postulante);
+        setChanged();
+        notifyObservers();
     }
 
     public void agregarEvaluador(Evaluador evaluador) {
         evaluadores.add(evaluador);
+        setChanged();
+        notifyObservers();
     }
 
     public void agregarPuesto(Puesto puesto) {
         puestos.add(puesto);
+        setChanged();
+        notifyObservers();
     }
 
     public void agregarEntrevista(Entrevista env) {
         entrevistas.add(env);
+        setChanged();
+        notifyObservers();
     }
 
     public ArrayList<String> obtenerNombresTematicas() {
@@ -172,6 +183,8 @@ public class Sistema {
                 entrevistas.remove(entre);
             }
         }
+        setChanged();
+        notifyObservers();
     }
 
     public int consultarPostulantesTematica(Tematica tem) {
@@ -188,9 +201,9 @@ public class Sistema {
 
     public int consultarPuestosTematica(Tematica tem) {
         int num = 0;
-        for(Puesto puesto : puestos){
-            if(puesto.getTemas().contains(tem)){
-                num ++;
+        for (Puesto puesto : puestos) {
+            if (puesto.getTemas().contains(tem)) {
+                num++;
             }
         }
         return num;

@@ -11,6 +11,8 @@ import java.util.Comparator;
 import java.util.Formatter;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.JOptionPane;
 import javax.swing.SpinnerNumberModel;
 
@@ -18,13 +20,14 @@ import javax.swing.SpinnerNumberModel;
  *
  * @author nicol
  */
-public class VentanaConsultaPuesto extends javax.swing.JFrame {
+public class VentanaConsultaPuesto extends javax.swing.JFrame implements Observer {
 
     /**
      * Creates new form VentanaIngresoEntrevista
      */
     public VentanaConsultaPuesto(Sistema sis) {
         modelo = sis;
+        modelo.addObserver(this);
         initComponents();
         cargarListaPuestos();
         puestoSeleccionado = null;
@@ -33,6 +36,14 @@ public class VentanaConsultaPuesto extends javax.swing.JFrame {
 
     public void cargarListaPuestos() {
         listaPuestos.setListData(modelo.obtenerPuestos().toArray());
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        listaPostulantesPuesto.setListData(new Puesto[0]);
+        cargarListaPuestos();
+        puestoSeleccionado = null;
+        posiblesPostulantes = null;
     }
 
     /**
@@ -60,6 +71,7 @@ public class VentanaConsultaPuesto extends javax.swing.JFrame {
         buttonCancelar = new javax.swing.JButton();
         buttonExportar = new javax.swing.JButton();
 
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
