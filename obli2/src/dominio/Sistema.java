@@ -208,4 +208,27 @@ public class Sistema extends Observable implements Serializable {
         }
         return num;
     }
+
+    public ArrayList<Postulante> obtenerPostulantesOrdenados() {
+        ArrayList<Postulante> postulantesOrdenados = new ArrayList<>(postulantes);
+        Collections.sort(postulantesOrdenados, new Comparator<Postulante>() {
+            @Override
+            public int compare(Postulante postu1ante1, Postulante postulante2) {
+                // Comparar por número de documento
+                return Integer.compare(postu1ante1.getCedula(), postulante2.getCedula());
+            }
+        });
+        return postulantesOrdenados;
+    }
+    public ArrayList<Entrevista> obtenerEntrevistaPorBusqueda(Postulante postulante, String busqueda){
+        ArrayList<Entrevista> entrevistasPorPostulante = obtenerEntrevistasPorPersona(postulante);
+        ArrayList<Entrevista> entrevistasPorBusqueda = new ArrayList<>();
+        for (Entrevista entrevista : entrevistasPorPostulante){
+            String comentarios = entrevista.getComentarios();
+            if (comentarios.toLowerCase().contains(busqueda)){
+                entrevistasPorBusqueda.add(entrevista);
+            }
+        }
+        return entrevistasPorBusqueda;
+    }
 }
