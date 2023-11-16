@@ -162,6 +162,9 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Postulantes:"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JLabel(&quot;&lt;html&gt;&lt;a href=\&quot;https://x.com\&quot;&gt;Enlace de ejemplo&lt;/a&gt;&lt;/html&gt;&quot;)"/>
+          </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="buttonConsultar">
           <Properties>
