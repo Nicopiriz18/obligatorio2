@@ -288,11 +288,11 @@ public class AltaPostulante extends javax.swing.JFrame {
 
         String selectedRadioButton = "";
         if (radioRemoto.isSelected()) {
-            selectedRadioButton = "remoto";
+            selectedRadioButton = "Remoto";
         } else if (radioPresencial.isSelected()) {
-            selectedRadioButton = "presencial";
+            selectedRadioButton = "Presencial";
         } else if (radioMixto.isSelected()) {
-            selectedRadioButton = "mixto";
+            selectedRadioButton = "Mixto";
         }
         String[] valores = {nombre, cedula, direccion, telefono, mail, linkedin, selectedRadioButton};
         boolean validos = true;

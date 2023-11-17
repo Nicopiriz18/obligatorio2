@@ -7,7 +7,9 @@ package interfaz;
 import dominio.*;
 import java.awt.Cursor;
 import java.awt.Desktop;
+import java.io.IOException;
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,7 +38,7 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame {
 
     public void cargarDatosPostulante(Postulante postulante) {
         labelNombre.setText(postulante.getNombre());
-        labelCedula.setText(String.valueOf(postulante.getNombre()));
+        labelCedula.setText(String.valueOf(postulante.getCedula()));
         labelDireccion.setText(postulante.getDireccion());
         labelTelefono.setText(postulante.getTelefono());
         labelMail.setText(postulante.getMail());
@@ -378,14 +380,14 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame {
 
     private void labelLinkedinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLinkedinMouseClicked
         // TODO add your handling code here:
+        String linkUsuario = labelLinkedin.getText();
         try {
             // Abrir el enlace en un navegador web
-            Desktop.getDesktop().browse(new URI(labelLinkedin.getText()));
-        } catch (Exception ex) {
-            ex.printStackTrace();
+            Desktop.getDesktop().browse(new URI(linkUsuario));
+        } catch (IOException | URISyntaxException ex) {
+            ex.printStackTrace();  // Aquí puedes manejar el error según tus necesidades, como mostrar un mensaje de error en tu aplicación.
         }
     }//GEN-LAST:event_labelLinkedinMouseClicked
-
     private void labelLinkedinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLinkedinMouseEntered
         // TODO add your handling code here:
         //labelLinkedin.setText("<html><u>" + labelLinkedin.getText() + "</u></html>");
