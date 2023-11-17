@@ -41,11 +41,11 @@ public class VentanaMenu extends javax.swing.JFrame {
         menuPostulantes = new javax.swing.JMenu();
         registroTematica = new javax.swing.JMenuItem();
         altaPostulante = new javax.swing.JMenuItem();
-        bajaPostulante = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        registroEvaluador = new javax.swing.JMenuItem();
-        ingresoEntrevista = new javax.swing.JMenuItem();
         registroPuesto = new javax.swing.JMenuItem();
+        ingresoEntrevista = new javax.swing.JMenuItem();
+        registroEvaluador = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        bajaPostulante = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         consultaPuesto = new javax.swing.JMenuItem();
         historiaPostulante = new javax.swing.JMenuItem();
@@ -78,7 +78,7 @@ public class VentanaMenu extends javax.swing.JFrame {
                 .addContainerGap(91, Short.MAX_VALUE))
         );
 
-        menuPostulantes.setText("Postulantes");
+        menuPostulantes.setText("Altas");
 
         registroTematica.setText("Registro de tematica");
         registroTematica.addActionListener(new java.awt.event.ActionListener() {
@@ -96,25 +96,13 @@ public class VentanaMenu extends javax.swing.JFrame {
         });
         menuPostulantes.add(altaPostulante);
 
-        bajaPostulante.setText("Baja de postulante");
-        bajaPostulante.addActionListener(new java.awt.event.ActionListener() {
+        registroPuesto.setText("Registro de puesto");
+        registroPuesto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                bajaPostulanteActionPerformed(evt);
+                registroPuestoActionPerformed(evt);
             }
         });
-        menuPostulantes.add(bajaPostulante);
-
-        jMenuBar1.add(menuPostulantes);
-
-        jMenu1.setText("Evaluadores");
-
-        registroEvaluador.setText("Registro de Evaluador");
-        registroEvaluador.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registroEvaluadorActionPerformed(evt);
-            }
-        });
-        jMenu1.add(registroEvaluador);
+        menuPostulantes.add(registroPuesto);
 
         ingresoEntrevista.setText("Ingreso de entrevista");
         ingresoEntrevista.addActionListener(new java.awt.event.ActionListener() {
@@ -122,15 +110,27 @@ public class VentanaMenu extends javax.swing.JFrame {
                 ingresoEntrevistaActionPerformed(evt);
             }
         });
-        jMenu1.add(ingresoEntrevista);
+        menuPostulantes.add(ingresoEntrevista);
 
-        registroPuesto.setText("Registro de puesto");
-        registroPuesto.addActionListener(new java.awt.event.ActionListener() {
+        registroEvaluador.setText("Registro de Evaluador");
+        registroEvaluador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registroPuestoActionPerformed(evt);
+                registroEvaluadorActionPerformed(evt);
             }
         });
-        jMenu1.add(registroPuesto);
+        menuPostulantes.add(registroEvaluador);
+
+        jMenuBar1.add(menuPostulantes);
+
+        jMenu1.setText("Bajas");
+
+        bajaPostulante.setText("Baja de postulante");
+        bajaPostulante.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bajaPostulanteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(bajaPostulante);
 
         jMenuBar1.add(jMenu1);
 

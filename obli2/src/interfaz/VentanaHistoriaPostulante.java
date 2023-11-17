@@ -161,9 +161,9 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame implements Obs
         jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Historial postulante");
+        jLabel1.setText("Historial de postulante");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(448, 6, 171, 25);
+        jLabel1.setBounds(448, 6, 240, 25);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Postulantes:");
