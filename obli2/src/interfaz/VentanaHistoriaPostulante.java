@@ -13,6 +13,8 @@ import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Observable;
+import java.util.Observer;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author nicol
  */
-public class VentanaHistoriaPostulante extends javax.swing.JFrame {
+public class VentanaHistoriaPostulante extends javax.swing.JFrame implements Observer {
 
     /**
      * Creates new form VentanaHistoriaPostulante
@@ -28,12 +30,20 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame {
     public VentanaHistoriaPostulante(Sistema sis) {
         initComponents();
         modelo = sis;
+        modelo.addObserver(this);
+
+        cargarListaPostulantes();
+        vaciarDatos();
+    }
+
+    public void update(Observable o, Object arg) {
         cargarListaPostulantes();
         vaciarDatos();
     }
 
     public void cargarListaPostulantes() {
-        listaPostulantes.setListData(modelo.obtenerPostulantesOrdenados().toArray());
+        String[] postsConCedula = modelo.obtenerPostulantesOrdenadosString();
+        listaPostulantes.setListData(postsConCedula);
     }
 
     public void cargarDatosPostulante(Postulante postulante) {
@@ -45,6 +55,7 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame {
         labelLinkedin.setText(postulante.getLinkedin());
         labelFormato.setText(postulante.getFormato());
         listaExperiencia.setListData(arrayHashmap(postulante));
+
     }
 
     public void vaciarDatos() {
@@ -56,6 +67,8 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame {
         labelLinkedin.setText("");
         labelFormato.setText("");
         listaExperiencia.setListData(new Postulante[0]);
+        DefaultTableModel tabla = (DefaultTableModel) tablaEntrevistas.getModel();
+        tabla.setRowCount(0);
     }
 
     public String[] arrayHashmap(Postulante postulante) {
@@ -150,14 +163,14 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame {
         jPanel1.setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Historial postulante");
+        jLabel1.setText("Historial de postulante");
         jPanel1.add(jLabel1);
-        jLabel1.setBounds(448, 6, 171, 25);
+        jLabel1.setBounds(448, 6, 240, 25);
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Postulantes:");
         jPanel1.add(jLabel2);
-        jLabel2.setBounds(37, 37, 80, 20);
+        jLabel2.setBounds(37, 37, 83, 20);
 
         listaPostulantes.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -177,7 +190,7 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Nombre:");
         jPanel1.add(jLabel3);
-        jLabel3.setBounds(561, 59, 58, 20);
+        jLabel3.setBounds(561, 59, 59, 20);
 
         labelNombre.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelNombre.setText("jLabel4");
@@ -187,7 +200,7 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel5.setText("Cédula:");
         jPanel1.add(jLabel5);
-        jLabel5.setBounds(561, 91, 49, 20);
+        jLabel5.setBounds(561, 91, 50, 20);
 
         labelCedula.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelCedula.setText("jLabel6");
@@ -197,7 +210,7 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Dirección:");
         jPanel1.add(jLabel7);
-        jLabel7.setBounds(561, 123, 65, 20);
+        jLabel7.setBounds(561, 123, 68, 20);
 
         labelDireccion.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelDireccion.setText("jLabel8");
@@ -207,7 +220,7 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel9.setText("Telefono");
         jPanel1.add(jLabel9);
-        jLabel9.setBounds(561, 155, 58, 20);
+        jLabel9.setBounds(561, 155, 61, 20);
 
         labelTelefono.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelTelefono.setText("jLabel10");
@@ -217,7 +230,7 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setText("Mail:");
         jPanel1.add(jLabel11);
-        jLabel11.setBounds(561, 187, 33, 20);
+        jLabel11.setBounds(561, 187, 34, 20);
 
         labelMail.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelMail.setText("jLabel12");
@@ -249,7 +262,7 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel15.setText("Formato:");
         jPanel1.add(jLabel15);
-        jLabel15.setBounds(561, 251, 59, 20);
+        jLabel15.setBounds(561, 251, 61, 20);
 
         labelFormato.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         labelFormato.setText("jLabel16");
@@ -259,7 +272,7 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame {
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel17.setText("Experiencia:");
         jPanel1.add(jLabel17);
-        jLabel17.setBounds(561, 283, 79, 20);
+        jLabel17.setBounds(561, 283, 82, 20);
 
         listaExperiencia.setModel(new javax.swing.AbstractListModel() {
             String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
@@ -288,7 +301,7 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnResetear);
-        btnResetear.setBounds(660, 420, 89, 31);
+        btnResetear.setBounds(660, 420, 110, 31);
 
         btnSalir.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSalir.setText("Salir");
@@ -340,7 +353,7 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame {
             }
         });
         jPanel1.add(btnBuscar1);
-        btnBuscar1.setBounds(560, 420, 77, 31);
+        btnBuscar1.setBounds(560, 420, 90, 31);
 
         getContentPane().add(jPanel1);
         jPanel1.setBounds(0, 0, 1160, 820);
@@ -355,27 +368,45 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame {
 
     private void listaPostulantesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaPostulantesValueChanged
         // TODO add your handling code here:
-        Postulante postulante = (Postulante) listaPostulantes.getSelectedValue();
-        cargarDatosPostulante(postulante);
-        ArrayList<Entrevista> entrevistasFiltradas = modelo.obtenerEntrevistasPorPersona(postulante);
-        cargarTablaEntrevistas(entrevistasFiltradas);
-        campoBusqueda.setText("");
-    }//GEN-LAST:event_listaPostulantesValueChanged
+        String selected = (String) listaPostulantes.getSelectedValue();
+        if (selected != null && !selected.equals("")) {
+            Postulante postulante = devolverPostulantePorNombreCedula(selected);
+            cargarDatosPostulante(postulante);
+            ArrayList<Entrevista> entrevistasFiltradas = modelo.obtenerEntrevistasPorPersona(postulante);
+            cargarTablaEntrevistas(entrevistasFiltradas);
+            campoBusqueda.setText("");
+        }
 
+    }//GEN-LAST:event_listaPostulantesValueChanged
+    public Postulante devolverPostulantePorNombreCedula(String nombreConCedula) {
+        String[] arraySplit = nombreConCedula.split(" ");
+        //agarro el ultimo bloque del split, el que se encuentra la cedula con parentesis
+        String cedulaPostConParentesis = arraySplit[arraySplit.length - 1];
+        int cedulaPost = Integer.parseInt(cedulaPostConParentesis.substring(1, cedulaPostConParentesis.length() - 1));
+        Postulante postulante = modelo.devolverPostulanteCedula(cedulaPost);
+        return postulante;
+    }
     private void btnBuscar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscar1ActionPerformed
         // TODO add your handling code here:
-        Postulante postulanteSeleccionado = (Postulante) listaPostulantes.getSelectedValue();
-        String busqueda = campoBusqueda.getText();
-        ArrayList<Entrevista> entrevistasFiltradas = modelo.obtenerEntrevistaPorBusqueda(postulanteSeleccionado, busqueda);
-        cargarTablaEntrevistasPorBusqueda(entrevistasFiltradas, busqueda);
+        String selected = (String) listaPostulantes.getSelectedValue();
+        if (selected != null && !selected.equals("")) {
+            Postulante postulanteSeleccionado = devolverPostulantePorNombreCedula(selected);
+            String busqueda = campoBusqueda.getText();
+            ArrayList<Entrevista> entrevistasFiltradas = modelo.obtenerEntrevistaPorBusqueda(postulanteSeleccionado, busqueda);
+            cargarTablaEntrevistasPorBusqueda(entrevistasFiltradas, busqueda);
+        }
+
     }//GEN-LAST:event_btnBuscar1ActionPerformed
 
     private void btnResetearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetearActionPerformed
         // TODO add your handling code here:
-        Postulante postulanteSeleccionado = (Postulante) listaPostulantes.getSelectedValue();
-        ArrayList<Entrevista> entrevistas = modelo.obtenerEntrevistasPorPersona(postulanteSeleccionado);
-        cargarTablaEntrevistas(entrevistas);
-        campoBusqueda.setText("");
+        String selected = (String) listaPostulantes.getSelectedValue();
+        if (selected != null && !selected.equals("")) {
+            Postulante postulanteSeleccionado = devolverPostulantePorNombreCedula(selected);
+            ArrayList<Entrevista> entrevistas = modelo.obtenerEntrevistasPorPersona(postulanteSeleccionado);
+            cargarTablaEntrevistas(entrevistas);
+            campoBusqueda.setText("");
+        }
     }//GEN-LAST:event_btnResetearActionPerformed
 
     private void labelLinkedinMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLinkedinMouseClicked

@@ -66,7 +66,7 @@ public class VentanaRegistroPuesto extends javax.swing.JFrame implements Observe
         btnSiguiente = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         buttonAgregarExperiencia = new javax.swing.JButton();
-        buttonAgregarExperiencia2 = new javax.swing.JButton();
+        buttonEliminarExp = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -153,11 +153,11 @@ public class VentanaRegistroPuesto extends javax.swing.JFrame implements Observe
             }
         });
 
-        buttonAgregarExperiencia2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        buttonAgregarExperiencia2.setText("Eliminar");
-        buttonAgregarExperiencia2.addActionListener(new java.awt.event.ActionListener() {
+        buttonEliminarExp.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        buttonEliminarExp.setText("Eliminar");
+        buttonEliminarExp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAgregarExperiencia2ActionPerformed(evt);
+                buttonEliminarExpActionPerformed(evt);
             }
         });
 
@@ -202,7 +202,7 @@ public class VentanaRegistroPuesto extends javax.swing.JFrame implements Observe
                                 .addGap(18, 18, 18)
                                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(buttonAgregarExperiencia)
-                                    .addComponent(buttonAgregarExperiencia2))
+                                    .addComponent(buttonEliminarExp))
                                 .addGap(0, 111, Short.MAX_VALUE))))
                     .addGroup(panelLayout.createSequentialGroup()
                         .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,7 +234,7 @@ public class VentanaRegistroPuesto extends javax.swing.JFrame implements Observe
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(buttonAgregarExperiencia2))
+                    .addComponent(buttonEliminarExp))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(45, 45, 45)
@@ -310,13 +310,13 @@ public class VentanaRegistroPuesto extends javax.swing.JFrame implements Observe
         Tematica tematicaElegida = modelo.devolverTematicaNombre(tematicaElegidaString);
         if (tematicaElegida.getNombre().equals("default")) {
             JOptionPane.showMessageDialog(this, "No se seleccionó una experiencia a agregar", "Error", JOptionPane.ERROR_MESSAGE);
-        } else {
+        } else if(!temas.contains(tematicaElegida)){
             temas.add(tematicaElegida);
             cargarListaTemas();
         }
     }//GEN-LAST:event_buttonAgregarExperienciaActionPerformed
 
-    private void buttonAgregarExperiencia2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAgregarExperiencia2ActionPerformed
+    private void buttonEliminarExpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarExpActionPerformed
         Tematica seleccionado = (Tematica) listaTemas.getSelectedValue();
         if (seleccionado == null) {
             JOptionPane.showMessageDialog(this, "No se seleccionó un tema a eliminar", "Error", JOptionPane.ERROR_MESSAGE);
@@ -324,7 +324,7 @@ public class VentanaRegistroPuesto extends javax.swing.JFrame implements Observe
             temas.remove(seleccionado);
             cargarListaTemas();
         }
-    }//GEN-LAST:event_buttonAgregarExperiencia2ActionPerformed
+    }//GEN-LAST:event_buttonEliminarExpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,7 +334,7 @@ public class VentanaRegistroPuesto extends javax.swing.JFrame implements Observe
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnSiguiente;
     private javax.swing.JButton buttonAgregarExperiencia;
-    private javax.swing.JButton buttonAgregarExperiencia2;
+    private javax.swing.JButton buttonEliminarExp;
     private javax.swing.JComboBox<String> comboTemas;
     private javax.swing.ButtonGroup formatoTrabajo;
     private javax.swing.JLabel jLabel1;

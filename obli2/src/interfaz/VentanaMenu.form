@@ -6,7 +6,7 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="menuPostulantes">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Postulantes"/>
+            <Property name="text" type="java.lang.String" value="Altas"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="registroTematica">
@@ -25,27 +25,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="altaPostulanteActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="bajaPostulante">
+            <MenuItem class="javax.swing.JMenuItem" name="registroPuesto">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Baja de postulante"/>
+                <Property name="text" type="java.lang.String" value="Registro de puesto"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bajaPostulanteActionPerformed"/>
-              </Events>
-            </MenuItem>
-          </SubComponents>
-        </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu1">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Evaluadores"/>
-          </Properties>
-          <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="registroEvaluador">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Registro de Evaluador"/>
-              </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registroEvaluadorActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registroPuestoActionPerformed"/>
               </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="ingresoEntrevista">
@@ -56,12 +41,27 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ingresoEntrevistaActionPerformed"/>
               </Events>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="registroPuesto">
+            <MenuItem class="javax.swing.JMenuItem" name="registroEvaluador">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Registro de puesto"/>
+                <Property name="text" type="java.lang.String" value="Registro de Evaluador"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registroPuestoActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="registroEvaluadorActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Bajas"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="bajaPostulante">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Baja de postulante"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bajaPostulanteActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>

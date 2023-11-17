@@ -64,7 +64,7 @@ public class VentanaConsultaPuesto extends javax.swing.JFrame implements Observe
         spinnerNivel = new javax.swing.JSpinner(spinnerModel);
         jLabel6 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
-        jLabel3 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel("<html><a href=\"https://x.com\">Enlace de ejemplo</a></html>");
         buttonConsultar = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         listaPostulantesPuesto = new javax.swing.JList();

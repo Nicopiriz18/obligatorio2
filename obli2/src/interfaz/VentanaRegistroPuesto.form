@@ -83,7 +83,7 @@
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="buttonAgregarExperiencia" min="-2" max="-2" attributes="0"/>
-                                      <Component id="buttonAgregarExperiencia2" min="-2" max="-2" attributes="0"/>
+                                      <Component id="buttonEliminarExp" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="0" pref="111" max="32767" attributes="0"/>
                               </Group>
@@ -128,7 +128,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jScrollPane1" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="buttonAgregarExperiencia2" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="buttonEliminarExp" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" pref="33" max="-2" attributes="0"/>
@@ -281,7 +281,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAgregarExperienciaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="buttonAgregarExperiencia2">
+        <Component class="javax.swing.JButton" name="buttonEliminarExp">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="14" style="1"/>
@@ -289,7 +289,7 @@
             <Property name="text" type="java.lang.String" value="Eliminar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonAgregarExperiencia2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonEliminarExpActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
