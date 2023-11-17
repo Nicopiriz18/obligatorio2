@@ -81,7 +81,7 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="historiaPostulante">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Historia de postulante"/>
+                <Property name="text" type="java.lang.String" value="Historial de postulante"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="historiaPostulanteActionPerformed"/>

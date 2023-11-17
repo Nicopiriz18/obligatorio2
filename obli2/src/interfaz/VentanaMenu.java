@@ -144,7 +144,7 @@ public class VentanaMenu extends javax.swing.JFrame {
         });
         jMenu2.add(consultaPuesto);
 
-        historiaPostulante.setText("Historia de postulante");
+        historiaPostulante.setText("Historial de postulante");
         historiaPostulante.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 historiaPostulanteActionPerformed(evt);
