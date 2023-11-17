@@ -85,27 +85,17 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame implements Obs
         }
         return experiencias;
     }
-
-    public void cargarTablaEntrevistas(ArrayList<Entrevista> entrevistas) {
-        DefaultTableModel tabla = (DefaultTableModel) tablaEntrevistas.getModel();
-        tabla.setRowCount(0);
-        for (Entrevista entrevista : entrevistas) {
-            Object[] fila = {entrevista.getId(), entrevista.getEvaluador(), entrevista.getPuntaje(), entrevista.getComentarios()};
-            tabla.addRow(fila);
-        }
-    }
-
-    public void cargarTablaEntrevistasPorBusqueda(ArrayList<Entrevista> entrevistas, String busqueda) {
-        DefaultTableModel tabla = (DefaultTableModel) tablaEntrevistas.getModel();
-        tabla.setRowCount(0);
+    
+    public void cargarTablaEntrevistas(ArrayList<Entrevista> entrevistas, String busqueda) {
+        DefaultTableModel model = (DefaultTableModel) tablaEntrevistas.getModel();
+        model.setRowCount(0);
 
         for (Entrevista entrevista : entrevistas) {
             String comentario = entrevista.getComentarios();
             Object[] fila = {entrevista.getId(), entrevista.getEvaluador(), entrevista.getPuntaje(), resaltarCoincidencias(comentario, busqueda)};
-            tabla.addRow(fila);
+            model.addRow(fila);
         }
     }
-
     private String resaltarCoincidencias(String texto, String busqueda) {
         // Escapamos los caracteres especiales de HTML para evitar posibles problemas
         texto = texto.replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;");
@@ -373,7 +363,7 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame implements Obs
             Postulante postulante = devolverPostulantePorNombreCedula(selected);
             cargarDatosPostulante(postulante);
             ArrayList<Entrevista> entrevistasFiltradas = modelo.obtenerEntrevistasPorPersona(postulante);
-            cargarTablaEntrevistas(entrevistasFiltradas);
+            cargarTablaEntrevistas(entrevistasFiltradas, "");
             campoBusqueda.setText("");
         }
 
@@ -393,7 +383,7 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame implements Obs
             Postulante postulanteSeleccionado = devolverPostulantePorNombreCedula(selected);
             String busqueda = campoBusqueda.getText();
             ArrayList<Entrevista> entrevistasFiltradas = modelo.obtenerEntrevistaPorBusqueda(postulanteSeleccionado, busqueda);
-            cargarTablaEntrevistasPorBusqueda(entrevistasFiltradas, busqueda);
+            cargarTablaEntrevistas(entrevistasFiltradas, busqueda);
         }
 
     }//GEN-LAST:event_btnBuscar1ActionPerformed
@@ -404,7 +394,7 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame implements Obs
         if (selected != null && !selected.equals("")) {
             Postulante postulanteSeleccionado = devolverPostulantePorNombreCedula(selected);
             ArrayList<Entrevista> entrevistas = modelo.obtenerEntrevistasPorPersona(postulanteSeleccionado);
-            cargarTablaEntrevistas(entrevistas);
+            cargarTablaEntrevistas(entrevistas, "");
             campoBusqueda.setText("");
         }
     }//GEN-LAST:event_btnResetearActionPerformed
