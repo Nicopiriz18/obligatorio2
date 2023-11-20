@@ -407,7 +407,7 @@ public class VentanaHistoriaPostulante extends javax.swing.JFrame implements Obs
             Desktop.getDesktop().browse(new URI(linkUsuario));
         } catch (IOException | URISyntaxException ex) {
             //ex.printStackTrace();
-            JOptionPane.showMessageDialog(null, "Error: El enlace no es válido", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Error: El enlace no es válido", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_labelLinkedinMouseClicked
     private void labelLinkedinMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelLinkedinMouseEntered
