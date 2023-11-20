@@ -20,8 +20,21 @@ import javax.swing.JOptionPane;
 public class Obli2 {
 
     public static void main(String[] args) {
+        Locale.setDefault(new Locale("es", "ES"));
+
         Sistema sis;
-        int opcion = JOptionPane.showConfirmDialog(null, "¿Desea iniciar el sistema con los últimos datos guardados?", "Datos del sistema", JOptionPane.YES_NO_OPTION);
+        //creamos las opciones de los botones en espanol para pasar al confirm dialog
+        Object[] opciones = {"Sí","No"};
+        int opcion = JOptionPane.showOptionDialog(
+                null,
+                "¿Desea iniciar el sistema con los últimos datos guardados?",
+                "Datos del sistema",
+                JOptionPane.YES_NO_OPTION,
+                JOptionPane.QUESTION_MESSAGE,
+                null,
+                opciones,
+                opciones[0]
+        );
         if (opcion == JOptionPane.YES_OPTION) {
             try {
                 ObjectInputStream in = new ObjectInputStream(
@@ -39,6 +52,5 @@ public class Obli2 {
         VentanaMenu vent = new VentanaMenu(sis);
 
         vent.setVisible(true);
-
     }
 }
